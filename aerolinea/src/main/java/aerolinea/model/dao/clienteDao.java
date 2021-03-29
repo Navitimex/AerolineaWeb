@@ -7,7 +7,6 @@ package aerolinea.model.dao;
 
 import aerolinea.configuracion.Conexion;
 import aerolinea.datos.Cliente;
-import aerolinea.datos.validar;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,26 +15,28 @@ import java.sql.ResultSet;
  *
  * @author kevin
  */
-public class clienteDao implements validar{
-        Connection con;
-    Conexion cn = new Conexion();
-    PreparedStatement ps;
-    ResultSet rs;
-    int resultado = 0;
+public class clienteDao {
 
-    @Override
+    Connection con;
+    Conexion cn = new Conexion();
+
+
     public int validar(Cliente cli) {
-        String sql = "Select * from cliente where nombre=? and correo=? ";
+        String sql = "Select * from cliente where correo=? and contrasena=? ";
         try {
+            PreparedStatement ps;
+            ResultSet rs;
+            int resultado = 0;
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, cli.getNombre());
-            ps.setString(2, cli.getCorreo());
+            ps.setString(1, cli.getCorreo());
+            ps.setString(2, cli.getContrasena());
             rs = ps.executeQuery();
             while (rs.next()) {
                 resultado = resultado + 1;
-                cli.setNombre(rs.getString("Nombres"));
-                cli.setCorreo(rs.getString("Correo"));
+                
+                cli.setCorreo(rs.getString("correo"));
+                cli.setContrasena(rs.getString("contrasena"));
             }
             if (resultado == 1) {
                 return 1;

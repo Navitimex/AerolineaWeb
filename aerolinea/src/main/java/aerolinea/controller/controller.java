@@ -33,9 +33,9 @@ public class controller extends HttpServlet {
             cliente.setContrasena(contrasena);
             resultado = dao.validar(cliente);
             if (resultado == 1) {
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("login.jsp").forward(request, response);
 
             }
         }
