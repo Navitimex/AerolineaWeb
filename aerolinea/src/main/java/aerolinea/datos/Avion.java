@@ -10,19 +10,22 @@ package aerolinea.datos;
  * @author kevin
  */
 public class Avion {
-    
-   private int anio;
-   private String modelo;
-   private String marca;
-   private int can_asientos;
-   
-       public Avion(int anio, String modelo, String marca, int can_asientos) {
+
+    private int anio;
+    private String modelo;
+    private String marca;
+    private int can_asientos;
+
+    public Avion(int anio, String modelo, String marca, int can_asientos) {
         this.anio = anio;
         this.modelo = modelo;
         this.marca = marca;
         this.can_asientos = can_asientos;
     }
-       
+
+    public Avion() {
+    }
+
     public int getAnio() {
         return anio;
     }
@@ -59,7 +62,5 @@ public class Avion {
     public String toString() {
         return "Avion{" + "anio=" + anio + ", modelo=" + modelo + ", marca=" + marca + ", can_asientos=" + can_asientos + '}';
     }
-
-
 
 }
