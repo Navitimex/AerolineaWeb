@@ -79,8 +79,8 @@
                     <div class="col-8 clearfix">
                         <ul class="notification-area pull-right">
                             <li>
-                                <a href="">
-                                    Cerrar Sessión
+                                <a href="login.jsp">
+                                    Cerrar Session
                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
                                 </a>
                             </li>
