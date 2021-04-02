@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aerolinea.config;
+package DAO_AccessoADatos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
