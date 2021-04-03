@@ -1,31 +1,54 @@
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_avion` AS select `keed_moviles`.`avion`.`id` AS `id`,`keed_moviles`.`avion`.`anio` AS `anio`,`keed_moviles`.`avion`.`modelo` AS `modelo`,`keed_moviles`.`avion`.`marca` AS `marca`,`keed_moviles`.`avion`.`can_asientos` AS `can_asientos` from `keed_moviles`.`avion`
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_avion` AS select `keed_moviles`.`avion`.`id` AS `id`,`keed_moviles`.`avion`.`anio` AS `anio`,`keed_moviles`.`avion`.`modelo` AS `modelo`,`keed_moviles`.`avion`.`marca` AS `marca`,`keed_moviles`.`avion`.`can_asientos` AS `can_asientos` from `keed_moviles`.`avion`;
+
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_cliente` AS select `keed_moviles`.`cliente`.`id` AS `id`,`keed_moviles`.`cliente`.`contrasena` AS `contrasena`,`keed_moviles`.`cliente`.`rol` AS `rol`,`keed_moviles`.`cliente`.`nombre` AS `nombre`,`keed_moviles`.`cliente`.`apellidos` AS `apellidos`,`keed_moviles`.`cliente`.`correo` AS `correo`,`keed_moviles`.`cliente`.`fec_naci` AS `fec_naci`,`keed_moviles`.`cliente`.`direccion` AS `direccion`,`keed_moviles`.`cliente`.`tel_trabajo` AS `tel_trabajo`,`keed_moviles`.`cliente`.`tel_cel` AS `tel_cel` from `keed_moviles`.`cliente`
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_cliente` AS select `keed_moviles`.`cliente`.`id` AS `id`,`keed_moviles`.`cliente`.`contrasena` AS `contrasena`,`keed_moviles`.`cliente`.`rol` AS `rol`,`keed_moviles`.`cliente`.`nombre` AS `nombre`,`keed_moviles`.`cliente`.`apellidos` AS `apellidos`,`keed_moviles`.`cliente`.`correo` AS `correo`,`keed_moviles`.`cliente`.`fec_naci` AS `fec_naci`,`keed_moviles`.`cliente`.`direccion` AS `direccion`,`keed_moviles`.`cliente`.`tel_trabajo` AS `tel_trabajo`,`keed_moviles`.`cliente`.`tel_cel` AS `tel_cel` from `keed_moviles`.`cliente`;
+
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_destinos` AS select `keed_moviles`.`destinos`.`codigo` AS `codigo`,`keed_moviles`.`destinos`.`nombre` AS `nombre` from `keed_moviles`.`destinos`
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_destinos` AS select `keed_moviles`.`destinos`.`codigo` AS `codigo`,`keed_moviles`.`destinos`.`nombre` AS `nombre` from `keed_moviles`.`destinos`;
+
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_horario` AS select `keed_moviles`.`horario`.`id` AS `id`,`keed_moviles`.`horario`.`dia_semana` AS `dia_semana`,`keed_moviles`.`horario`.`hora_salida` AS `hora_salida`,`keed_moviles`.`horario`.`hora_llegada` AS `hora_llegada`,`keed_moviles`.`horario`.`Ruta_codigo` AS `Ruta_codigo` from `keed_moviles`.`horario`
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_horario` AS select `keed_moviles`.`horario`.`id` AS `id`,`keed_moviles`.`horario`.`dia_semana` AS `dia_semana`,`keed_moviles`.`horario`.`hora_salida` AS `hora_salida`,`keed_moviles`.`horario`.`hora_llegada` AS `hora_llegada`,`keed_moviles`.`horario`.`Ruta_codigo` AS `Ruta_codigo` from `keed_moviles`.`horario`;
+
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_horario_commleto` AS select `vh`.`id` AS `id`,`vh`.`dia_semana` AS `dia_semana`,`vh`.`hora_salida` AS `hora_salida`,`vh`.`hora_llegada` AS `hora_llegada`,`vh`.`Ruta_codigo` AS `Ruta_codigo`,concat_ws(' - ',`d1`.`nombre`,`d2`.`nombre`) AS `tayecto` from (((`keed_moviles`.`destinos` `d1` join `keed_moviles`.`destinos` `d2`) join `keed_moviles`.`ruta` `r1`) join `keed_moviles`.`vista_horario` `vh`) where ((`d1`.`codigo` = `r1`.`origen`) and (`r1`.`codigo` = `vh`.`Ruta_codigo`) and (`d2`.`codigo` = `r1`.`destino`) and (`r1`.`codigo` = `vh`.`Ruta_codigo`))
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_horario_commleto` AS select `vh`.`id` AS `id`,`vh`.`dia_semana` AS `dia_semana`,`vh`.`hora_salida` AS `hora_salida`,`vh`.`hora_llegada` AS `hora_llegada`,`vh`.`Ruta_codigo` AS `Ruta_codigo`,concat_ws(' - ',`d1`.`nombre`,`d2`.`nombre`) AS `tayecto` from (((`keed_moviles`.`destinos` `d1` join `keed_moviles`.`destinos` `d2`) join `keed_moviles`.`ruta` `r1`) join `keed_moviles`.`vista_horario` `vh`) where ((`d1`.`codigo` = `r1`.`origen`) and (`r1`.`codigo` = `vh`.`Ruta_codigo`) and (`d2`.`codigo` = `r1`.`destino`) and (`r1`.`codigo` = `vh`.`Ruta_codigo`));
+
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_reservacion` AS select `keed_moviles`.`reservacion`.`id` AS `id`,`keed_moviles`.`reservacion`.`ida` AS `ida`,`keed_moviles`.`reservacion`.`vuelta` AS `vuelta`,`keed_moviles`.`reservacion`.`Cliente_id` AS `Cliente_id` from `keed_moviles`.`reservacion`
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_reservacion` AS select `keed_moviles`.`reservacion`.`id` AS `id`,`keed_moviles`.`reservacion`.`ida` AS `ida`,`keed_moviles`.`reservacion`.`vuelta` AS `vuelta`,`keed_moviles`.`reservacion`.`Cliente_id` AS `Cliente_id` from `keed_moviles`.`reservacion`;
+
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_reservacion_completa` AS select distinct `vr`.`id` AS `id`,concat_ws(' ',`vc`.`nombre`,`vc`.`apellidos`) AS `Nombre_cliente`,`vtc1`.`id` AS `id_ida`,`vtc1`.`ruta` AS `ruta_ida`,`vtc1`.`numero_asiento` AS `asiento_ida`,`vtc1`.`id_avion` AS `id_avion_ida`,`vtc1`.`Avion` AS `Avion_ida`,`vr`.`vuelta` AS `vuelta`,if((`vr`.`vuelta` is not null),`vtc2`.`id`,NULL) AS `id_vuelta`,if((`vr`.`vuelta` is not null),`vtc2`.`ruta`,NULL) AS `ruta_vuelta`,if((`vr`.`vuelta` is not null),`vtc2`.`numero_asiento`,NULL) AS `asiento_vuelta`,if((`vr`.`vuelta` is not null),`vtc2`.`id_avion`,NULL) AS `id_avion_vuelta`,if((`vr`.`vuelta` is not null),`vtc2`.`Avion`,NULL) AS `Avion_vuelta` from (((`keed_moviles`.`vista_tiquete_completo` `vtc1` join `keed_moviles`.`vista_tiquete_completo` `vtc2`) join `keed_moviles`.`vista_reservacion` `vr`) join `keed_moviles`.`vista_cliente` `vc`) where ((`vr`.`Cliente_id` = `vc`.`id`) and (`vtc1`.`id` = `vr`.`ida`) and ((`vtc2`.`id` = `vr`.`vuelta`) or (`vr`.`vuelta` is null)))
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_tiquete_completo` AS select `vt`.`id` AS `id`,concat_ws(' ',`vc`.`nombre`,`vc`.`apellidos`) AS `Nombre_completo`,`vc`.`id` AS `Cliente_id`,concat_ws(' - ',`vvc`.`Ruta`,`vvc`.`trayecto`) AS `ruta`,`vt`.`numero_asiento` AS `numero_asiento`,`va`.`id` AS `id_avion`,concat_ws(' - ',`va`.`marca`,`va`.`modelo`) AS `Avion` from (((`keed_moviles`.`vista_tiquete` `vt` join `keed_moviles`.`vista_cliente` `vc`) join `keed_moviles`.`vista_vuelo_completo` `vvc`) join `keed_moviles`.`vista_avion` `va`) where ((`vt`.`Vuelo_id` = `vvc`.`id`) and (`vt`.`Cliente_id` = `vc`.`id`) and (`vvc`.`Avion_id` = `va`.`id`));
+
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_reservacion_completa_solo_ida` AS select `vr`.`id` AS `id`,concat_ws(' ',`vc`.`nombre`,`vc`.`apellidos`) AS `Nombre_cliente`,`vtc1`.`id` AS `id_ida`,`vtc1`.`ruta` AS `ruta_ida`,`vtc1`.`numero_asiento` AS `asiento_ida`,`vtc1`.`id_avion` AS `id_avion_ida`,`vtc1`.`Avion` AS `Avion_ida` from ((`keed_moviles`.`vista_tiquete_completo` `vtc1` join `keed_moviles`.`vista_cliente` `vc`) join `keed_moviles`.`vista_reservacion` `vr`) where ((`vtc1`.`id` = `vr`.`ida`) and (`vr`.`vuelta` is null) and (`vr`.`Cliente_id` = `vc`.`id`))
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_reservacion_completa` AS select distinct `vr`.`id` AS `id`,concat_ws(' ',`vc`.`nombre`,`vc`.`apellidos`) AS `Nombre_cliente`,`vtc1`.`id` AS `id_ida`,`vtc1`.`ruta` AS `ruta_ida`,`vtc1`.`numero_asiento` AS `asiento_ida`,`vtc1`.`id_avion` AS `id_avion_ida`,`vtc1`.`Avion` AS `Avion_ida`,`vr`.`vuelta` AS `vuelta`,if((`vr`.`vuelta` is not null),`vtc2`.`id`,NULL) AS `id_vuelta`,if((`vr`.`vuelta` is not null),`vtc2`.`ruta`,NULL) AS `ruta_vuelta`,if((`vr`.`vuelta` is not null),`vtc2`.`numero_asiento`,NULL) AS `asiento_vuelta`,if((`vr`.`vuelta` is not null),`vtc2`.`id_avion`,NULL) AS `id_avion_vuelta`,if((`vr`.`vuelta` is not null),`vtc2`.`Avion`,NULL) AS `Avion_vuelta` from (((`keed_moviles`.`vista_tiquete_completo` `vtc1` join `keed_moviles`.`vista_tiquete_completo` `vtc2`) join `keed_moviles`.`vista_reservacion` `vr`) join `keed_moviles`.`vista_cliente` `vc`) where ((`vr`.`Cliente_id` = `vc`.`id`) and (`vtc1`.`id` = `vr`.`ida`) and ((`vtc2`.`id` = `vr`.`vuelta`) or (`vr`.`vuelta` is null)));
+
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_ruta` AS select `keed_moviles`.`ruta`.`codigo` AS `codigo`,`keed_moviles`.`ruta`.`origen` AS `origen`,`keed_moviles`.`ruta`.`destino` AS `destino`,`keed_moviles`.`ruta`.`duracionMin` AS `duracionMin`,`keed_moviles`.`ruta`.`precio` AS `precio`,`keed_moviles`.`ruta`.`descuento` AS `descuento` from `keed_moviles`.`ruta`
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_reservacion_completa_solo_ida` AS select `vr`.`id` AS `id`,concat_ws(' ',`vc`.`nombre`,`vc`.`apellidos`) AS `Nombre_cliente`,`vtc1`.`id` AS `id_ida`,`vtc1`.`ruta` AS `ruta_ida`,`vtc1`.`numero_asiento` AS `asiento_ida`,`vtc1`.`id_avion` AS `id_avion_ida`,`vtc1`.`Avion` AS `Avion_ida` from ((`keed_moviles`.`vista_tiquete_completo` `vtc1` join `keed_moviles`.`vista_cliente` `vc`) join `keed_moviles`.`vista_reservacion` `vr`) where ((`vtc1`.`id` = `vr`.`ida`) and (`vr`.`vuelta` is null) and (`vr`.`Cliente_id` = `vc`.`id`));
+
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_ruta_completa` AS select `vr`.`codigo` AS `codigo`,`d1`.`nombre` AS `origen`,`d2`.`nombre` AS `destino`,`vr`.`duracionMin` AS `duracionMIn`,`vr`.`precio` AS `precio`,`vr`.`descuento` AS `descuento` from ((`keed_moviles`.`destinos` `d1` join `keed_moviles`.`destinos` `d2`) join `keed_moviles`.`vista_ruta` `vr`) where ((`d1`.`codigo` = `vr`.`origen`) and (`d2`.`codigo` = `vr`.`destino`))
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_ruta` AS select `keed_moviles`.`ruta`.`codigo` AS `codigo`,`keed_moviles`.`ruta`.`origen` AS `origen`,`keed_moviles`.`ruta`.`destino` AS `destino`,`keed_moviles`.`ruta`.`duracionMin` AS `duracionMin`,`keed_moviles`.`ruta`.`precio` AS `precio`,`keed_moviles`.`ruta`.`descuento` AS `descuento` from `keed_moviles`.`ruta`;
+
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_tiquete` AS select `keed_moviles`.`tiquete`.`id` AS `id`,`keed_moviles`.`tiquete`.`Vuelo_id` AS `Vuelo_id`,`keed_moviles`.`tiquete`.`Cliente_id` AS `Cliente_id`,`keed_moviles`.`tiquete`.`numero_asiento` AS `numero_asiento` from `keed_moviles`.`tiquete`
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_ruta_completa` AS select `vr`.`codigo` AS `codigo`,`d1`.`nombre` AS `origen`,`d2`.`nombre` AS `destino`,`vr`.`duracionMin` AS `duracionMIn`,`vr`.`precio` AS `precio`,`vr`.`descuento` AS `descuento` from ((`keed_moviles`.`destinos` `d1` join `keed_moviles`.`destinos` `d2`) join `keed_moviles`.`vista_ruta` `vr`) where ((`d1`.`codigo` = `vr`.`origen`) and (`d2`.`codigo` = `vr`.`destino`));
+
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_tiquete_completo` AS select `vt`.`id` AS `id`,concat_ws(' ',`vc`.`nombre`,`vc`.`apellidos`) AS `Nombre_completo`,`vc`.`id` AS `Cliente_id`,concat_ws(' - ',`vvc`.`Ruta`,`vvc`.`trayecto`) AS `ruta`,`vt`.`numero_asiento` AS `numero_asiento`,`va`.`id` AS `id_avion`,concat_ws(' - ',`va`.`marca`,`va`.`modelo`) AS `Avion` from (((`keed_moviles`.`vista_tiquete` `vt` join `keed_moviles`.`vista_cliente` `vc`) join `keed_moviles`.`vista_vuelo_completo` `vvc`) join `keed_moviles`.`vista_avion` `va`) where ((`vt`.`Vuelo_id` = `vvc`.`id`) and (`vt`.`Cliente_id` = `vc`.`id`) and (`vvc`.`Avion_id` = `va`.`id`))
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_tiquete` AS select `keed_moviles`.`tiquete`.`id` AS `id`,`keed_moviles`.`tiquete`.`Vuelo_id` AS `Vuelo_id`,`keed_moviles`.`tiquete`.`Cliente_id` AS `Cliente_id`,`keed_moviles`.`tiquete`.`numero_asiento` AS `numero_asiento` from `keed_moviles`.`tiquete`;
+
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_vuelo` AS select `keed_moviles`.`vuelo`.`id` AS `id`,`keed_moviles`.`vuelo`.`Horario_id` AS `Horario_id`,`keed_moviles`.`vuelo`.`Ruta_codigo` AS `Ruta_codigo`,`keed_moviles`.`vuelo`.`Avion_id` AS `Avion_id` from `keed_moviles`.`vuelo`
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_vuelo` AS select `keed_moviles`.`vuelo`.`id` AS `id`,`keed_moviles`.`vuelo`.`Horario_id` AS `Horario_id`,`keed_moviles`.`vuelo`.`Ruta_codigo` AS `Ruta_codigo`,`keed_moviles`.`vuelo`.`Avion_id` AS `Avion_id` from `keed_moviles`.`vuelo`;
+
 USE `keed_moviles`;
-CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_vuelo_completo` AS select `vv`.`id` AS `id`,`vv`.`Horario_id` AS `Horario_id`,concat_ws(' - ',`vh`.`dia_semana`,`vh`.`hora_salida`) AS `Ruta`,`vv`.`Ruta_codigo` AS `Ruta_codigo`,`vh`.`tayecto` AS `trayecto`,`vv`.`Avion_id` AS `Avion_id` from (`keed_moviles`.`vista_vuelo` `vv` join `keed_moviles`.`vista_horario_commleto` `vh`) where (`vv`.`Horario_id` = `vh`.`id`)
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `keed_moviles`.`vista_vuelo_completo` AS select `vv`.`id` AS `id`,`vv`.`Horario_id` AS `Horario_id`,concat_ws(' - ',`vh`.`dia_semana`,`vh`.`hora_salida`) AS `Ruta`,`vv`.`Ruta_codigo` AS `Ruta_codigo`,`vh`.`tayecto` AS `trayecto`,`vv`.`Avion_id` AS `Avion_id` from (`keed_moviles`.`vista_vuelo` `vv` join `keed_moviles`.`vista_horario_commleto` `vh`) where (`vv`.`Horario_id` = `vh`.`id`);
+
+DELIMITER $$
+USE `keed_moviles`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_avion_can_asientos`(in id_avion int, in can_asientos_nuevo int)
+BEGIN
+update avion set can_asientos = can_asientos_nuevo where id = id_avion;
+END$$
+
+DELIMITER ;
+
 
 DELIMITER $$
 USE `keed_moviles`$$
@@ -37,14 +60,6 @@ END$$
 
 DELIMITER ;
 
-DELIMITER $$
-USE `keed_moviles`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_avion_can_asientos`(in id_avion int, in can_asientos_nuevo int)
-BEGIN
-update avion set can_asientos = can_asientos_nuevo where id = id_avion;
-END$$
-
-DELIMITER ;
 
 DELIMITER $$
 USE `keed_moviles`$$
@@ -273,10 +288,11 @@ DELIMITER ;
 CREATE DEFINER=`root`@`localhost` FUNCTION `seleccionar_id_cliente_de_acuerdo_tiquete`(id_tiquete int) RETURNS int
     DETERMINISTIC
 BEGIN
-declare id_Cliente int;
+declare id_Cliente int ;
 select Cliente_id into id_Cliente from tiquete where id = id_tiquete;
 RETURN id_Cliente;
 END
+
 
 CREATE DEFINER=`root`@`localhost` FUNCTION `seleccionar_minutos_ruta`(id_ruta int) RETURNS time
     DETERMINISTIC
@@ -295,6 +311,7 @@ RETURN ruta_id;
 END
 
 
+15:35:42	CREATE DEFINER=`root`@`localhost` FUNCTION `seleccionar_ruta_de_acuerdo_horario`(id_horario int) RETURNS int      DETERMINISTIC  BEGIN  declare ruta_id int	Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4	0.000 sec
 
 
 
