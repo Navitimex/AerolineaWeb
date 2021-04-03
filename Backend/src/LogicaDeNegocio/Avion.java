@@ -6,19 +6,36 @@ public class Avion {
 
     private int id;
     private int anio;
-    private int can_asientos;
     private String modelo;
     private String marca;
+    private int can_asientos;
 
     public Avion() {
     }
 
-    public Avion(int id, int anio, int can_asientos, String modelo, String marca) {
+    public Avion(int id, int anio, String modelo, String marca, int can_asientos) {
         this.id = id;
         this.anio = anio;
-        this.can_asientos = can_asientos;
         this.modelo = modelo;
         this.marca = marca;
+        this.can_asientos = can_asientos;
+    }
+
+//    public Avion(int anio, String modelo, String marca, int can_asientos) {
+//        this.anio = anio;
+//        this.modelo = modelo;
+//        this.marca = marca;
+//        this.can_asientos = can_asientos;
+//    }
+
+    public JSONObject toJSON() {
+        JSONObject r = new JSONObject();
+        r.put("id", getId());
+        r.put("anio", getAnio());
+        r.put("modelo", getModelo());
+        r.put("marca", getMarca());
+        r.put("can_asientos", getCan_asientos());
+        return r;
     }
 
     @Override
