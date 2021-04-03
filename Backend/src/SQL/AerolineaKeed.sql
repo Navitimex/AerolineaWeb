@@ -200,12 +200,6 @@ CREATE TABLE IF NOT EXISTS `Keed_moviles`.`Reservacion` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Usuarios de Prueba
--- -----------------------------------------------------
-INSERT INTO `keed_moviles`.`cliente` (`id`, `contrasena`, `rol`, `nombre`, `apellidos`, `correo`, `fec_naci`, `direccion`, `tel_trabajo`, `tel_cel`) VALUES ('402390969', '12345678', '1', 'kevin', 'artavia', 'kevinartavia29@hotmail.com', '1995-01-29', 'asda', '88857993', '22613697');
-
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
