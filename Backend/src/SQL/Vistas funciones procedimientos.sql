@@ -319,6 +319,46 @@ SELECT * FROM keed_moviles.vista_avion where id = id_avion ;
 END
 
 --------------------------------------------------------------------------------------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_tiquete_x_id`(in Id int)
+BEGIN
+SELECT * FROM vista_tiquete_completo where Cliente_id= Id; 
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_avion_x_id`(in id_avion int)
+BEGIN
+SELECT * FROM keed_moviles.vista_avion where id = id_avion ;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_destinos_x_id`(in id int)
+BEGIN
+select * from vista_destinos where codigo = id;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_horario_x_id`(in ID int)
+BEGIN
+SELECT * FROM keed_moviles.vista_horario_commleto where id = ID;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_cliente_x_id`(in ID int)
+BEGIN
+SELECT * FROM keed_moviles.vista_cliente where id = ID;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_reservacion_x_id`(in ID int)
+BEGIN
+select * from vista_reservacion_completa where id = ID;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_ruta_x_id`(in ID int)
+BEGIN
+select * from vista_ruta_completa where codigo = ID;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_vuelo_x_id`(in ID int)
+BEGIN
+select * from vista_vuelo_completo where id = ID;
+end
+--------------------------------------------------------------------------------
 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_avion`(in id_avion int, in anio_nuevo int, in modelo_nuevo varchar(20), in marca_nueva varchar(45),  in can_asientos_nuevo int )
 BEGIN
 update avion set anio = anio_nuevo, modelo = modelo_nuevo, marca = marca_nueva, can_asientos = can_asientos_nuevo
@@ -349,11 +389,57 @@ tel_cel = Tel_cel
 where id = ID;
 END
 
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_cliente_x_id`(in ID int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_destinos`(in ID int, in Nombre varchar(45))
 BEGIN
-SELECT * FROM keed_moviles.vista_cliente where id = ID;
+update destinos set nombre = Nombre where codigo = Codigo;
 END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_horario`(in ID int, in Dia_semana varchar(45), in Hora_salida time, in Hora_llegada time, in ruta_codigo int )
+BEGIN
+update horario set 
+dia_semana = Dia_semana,
+hora_salida = Hora_salida,
+hora_llegada = Hora_llegada, 
+Ruta_codigo = ruta_codigo
+where
+id = ID;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_reservacion`(in ID int,in Ida int, in Vuelta int, in cliente_id int)
+BEGIN
+update reservacion set ida = Ida, vuelta = Vuelta, Cliente_id = cliente_id where id = ID;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_ruta`(in ID int, in Origen int, in Destino int, in Duracion time, in Precio float, in Descuento float)
+BEGIN
+update ruta set origen = Origen, destino = Destino, duracionMin = Duracion, precio = Precio, descuento = Descuento where codigo = ID;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_tiquete`(in Id int, in vuelo_id int, in cliente_id int, in Numero_asiento int)
+BEGIN
+update tiquete set 
+Vuelo_id = vuelo_id,
+Cliente_id = cliente_id,
+numero_asiento = Numero_asiento
+where 
+id = Id;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_vuelo`(in ID int, in horario int, in ruta_codigo int, in avion_id int )
+BEGIN
+update vuelo set Horario = horario, Ruta_codigo = ruta_codigo, Avion_id = avion_id where id = ID;
+END
+
+
+
+
+
+
+
+
+
+
+
 
 
 
