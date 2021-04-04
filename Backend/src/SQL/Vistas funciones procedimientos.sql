@@ -313,7 +313,47 @@ END
 
 15:35:42	CREATE DEFINER=`root`@`localhost` FUNCTION `seleccionar_ruta_de_acuerdo_horario`(id_horario int) RETURNS int      DETERMINISTIC  BEGIN  declare ruta_id int	Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4	0.000 sec
 
+CREATE PROCEDURE `mostrar_avion_x_id` (in id_avion int)
+BEGIN
+SELECT * FROM keed_moviles.vista_avion where id = id_avion ;
+END
 
+--------------------------------------------------------------------------------------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_avion`(in id_avion int, in anio_nuevo int, in modelo_nuevo varchar(20), in marca_nueva varchar(45),  in can_asientos_nuevo int )
+BEGIN
+update avion set anio = anio_nuevo, modelo = modelo_nuevo, marca = marca_nueva, can_asientos = can_asientos_nuevo
+
+where id = id_avion;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_cliente`(in ID int,
+ in Contrasena varchar(45), 
+ in Nombre varchar(45), 
+ in Apellidos varchar(45), 
+ in Correo varchar(45), 
+ in Fec_nacimiento date,  
+ in Direecion varchar(45), 
+ in Tel_trabajo varchar(45), 
+ in Tel_cel varchar(45)    )
+BEGIN
+update 
+cliente set 
+contrasena = Contrasena,
+nombre = Nombre, 
+apellidos = Apellidos,
+correo = Correo,
+fec_nacimiento = Fec_nacimiento,
+direccion = Direccion,
+tel_trabajo = Tel_trabajo,
+tel_cel = Tel_cel
+where id = ID;
+END
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_cliente_x_id`(in ID int)
+BEGIN
+SELECT * FROM keed_moviles.vista_cliente where id = ID;
+END
 
 
 

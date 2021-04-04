@@ -18,7 +18,7 @@ public class Conexion {
     protected void conectar() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/keed_moviles", "root", "admin");
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/keed_moviles", "root", "root");
             System.out.println("Coneccion Satisfactoria");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error de coneccion: " + e);

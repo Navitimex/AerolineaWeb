@@ -10,14 +10,14 @@ import java.util.ArrayList;
 
 public class DaoAvion extends Conexion {
 
-    private static final String INSERTAR_AVION = "{call insertar_avion(?,?,?,?)}";
-    private static final String ACTUALIZAR_AVION_ANIO = "{call actualizar_avion_anio(?)}";
-    private static final String ACTUALIZAR_AVION_MODELO = "{call actualizar_avion_modelo(?)}";
-    private static final String ACTUALIZAR_AVION_MARCA = "{call actualizar_avion_marca(?)}";
-    private static final String ACTUALIZAR_AVION_CAN_ASIENTOS = "{call actualizar_avion_can_asientos(?)}";
-    private static final String VISTA_AVION = "{select * from keed_moviles.vista_avion}";
-    private static final String MOSTRAR_AVION_X_ID = "{call mostrar_avion_x_id(?)}";
-    private static final String ELIMINAR_AVION = "{call eliminar_avion(?)}";
+    private static final String INSERTAR_AVION = "call insertar_avion(?,?,?,?)";
+    private static final String ACTUALIZAR_AVION_ANIO = "call actualizar_avion_anio(?)";
+    private static final String ACTUALIZAR_AVION_MODELO = "call actualizar_avion_modelo(?)";
+    private static final String ACTUALIZAR_AVION_MARCA = "call actualizar_avion_marca(?)";
+    private static final String ACTUALIZAR_AVION_CAN_ASIENTOS = "call actualizar_avion_can_asientos(?)";
+    private static final String VISTA_AVION = "SELECT * FROM keed_moviles.vista_avion;";
+    private static final String MOSTRAR_AVION_X_ID = "call mostrar_avion_x_id(?)";
+    private static final String ELIMINAR_AVION = "call eliminar_avion(?)";
 
     public void insertar_avion(Avion avion) throws NoDataException, GlobalException {
         conectar();
