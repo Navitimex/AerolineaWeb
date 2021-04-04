@@ -10,11 +10,11 @@ import java.util.ArrayList;
 
 public class DaoRuta extends Conexion {
 
-    private static final String INSERTAR_RUTA = "{call insertar_ruta(?,?,?,?,?,?)}";
-    private static final String ACTUALIZAR_RUTA = "{call actualizar_ruta(?,?,?,?,?,?)}";
-    private static final String MOSTRAR_RUTA_X_ID = "{call mostrar_ruta_x_id(?)}";
-    private static final String VISTA_RUTA = "{select * from keed_moviles.vista_destinos}";
-    private static final String ELIMINAR_RUTA = "{call elimiar_ruta(?)}";
+    private static final String INSERTAR_RUTA = "call insertar_ruta(?,?,?,?,?,?)";
+    private static final String ACTUALIZAR_RUTA = "call actualizar_ruta(?,?,?,?,?,?)";
+    private static final String MOSTRAR_RUTA_X_ID = "call mostrar_ruta_x_id(?)";
+    private static final String VISTA_RUTA = "select * from keed_moviles.vista_destinos";
+    private static final String ELIMINAR_RUTA = "call elimiar_ruta(?)";
 
 
 

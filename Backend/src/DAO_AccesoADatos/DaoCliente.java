@@ -11,11 +11,11 @@ import java.util.ArrayList;
 
 public class DaoCliente extends Conexion {
 
-    private static final String INSERTAR_CLIENTE = "{call insertar_cliente(?,?,?,?,?,?,?,?,?)}";
-    private static final String ACTUALIZAR_CLIENTE = "{call actualizar_cliente(?,?,?,?,?,?,?,?,?,?)}";
-    private static final String MOSTRAR_CLIENTE_X_ID = "{call mostrar_cliente_x_id(?)}";
-    private static final String VISTA_CLIENTE = "{select * from keed_moviles.vista_cliente}";
-    private static final String ELIMINAR_CLIENTE = "{call eliminar_cliente(?)}";
+    private static final String INSERTAR_CLIENTE = "call insertar_cliente(?,?,?,?,?,?,?,?,?)";
+    private static final String ACTUALIZAR_CLIENTE = "call actualizar_cliente(?,?,?,?,?,?,?,?,?,?)";
+    private static final String MOSTRAR_CLIENTE_X_ID = "call mostrar_cliente_x_id(?)";
+    private static final String VISTA_CLIENTE = "select * from keed_moviles.vista_cliente";
+    private static final String ELIMINAR_CLIENTE = "call eliminar_cliente(?)";
 
     public void insertar_cliente(Cliente cliente) throws NoDataException, GlobalException {
         conectar();

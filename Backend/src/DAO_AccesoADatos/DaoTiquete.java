@@ -11,11 +11,11 @@ import java.util.ArrayList;
 
 public class DaoTiquete extends Conexion {
 
-    private static final String INSERTAR_TIQUETE = "{call insertar_tiquete(?,?,?,?)}";
-    private static final String ACTUALIZAR_TIQUETE = "{call actualizar_tiquete(?,?,?,?,?)}";
-    private static final String MOSTRAR_TIQUETE_X_ID = "{call mostrar_tiquete_x_id(?)}";
-    private static final String VISTA_TIQUETE = "{select * from keed_moviles.vista_tiquete}";
-    private static final String ELIMINAR_TIQUETE = "{call eliminar_tiquete(?)}";
+    private static final String INSERTAR_TIQUETE = "call insertar_tiquete(?,?,?,?)";
+    private static final String ACTUALIZAR_TIQUETE = "call actualizar_tiquete(?,?,?,?,?)";
+    private static final String MOSTRAR_TIQUETE_X_ID = "call mostrar_tiquete_x_id(?)";
+    private static final String VISTA_TIQUETE = "select * from keed_moviles.vista_tiquete";
+    private static final String ELIMINAR_TIQUETE = "call eliminar_tiquete(?)";
  
     
     public void insertar_tiquete(Tiquete tiquete) throws NoDataException, GlobalException {

@@ -7,6 +7,8 @@ package backendmain;
 
 import LogicaDeNegocio.Avion;
 import Model.ModelAvion;
+import Model.ModelCliente;
+import Model.ModelDestino;
 
 /**
  *
@@ -21,6 +23,9 @@ public class backendmain {
              //ModelAvion.getInstance().insertar(new Avion(23,234,"AIRBUS319","80",80));
               
              System.out.println(ModelAvion.getInstance().listar());
+             System.out.println(ModelDestino.getInstance().listar());
+             System.out.println(ModelCliente.getInstance().listar());
+
     }
     
 }

@@ -10,11 +10,11 @@ import java.util.ArrayList;
 
 public class DaoHorario extends Conexion {
 
-    private static final String INSERTAR_HORARIO = "{call insertar_horario(?,?,?,?,?)}";
-    private static final String ACTUALIZAR_HORARIO = "{call actualizar_horario(?,?,?,?,?)}";
-    private static final String MOSTRAR_HORARIO_X_ID = "{call mostrar_horario_x_id(?)}";
-    private static final String VISTA_HORARIO = "{select * from keed_moviles.vista_horario}";
-    private static final String ELIMINAR_HORARIO = "{call eliminar_horario(?)}";
+    private static final String INSERTAR_HORARIO = "call insertar_horario(?,?,?,?,?)";
+    private static final String ACTUALIZAR_HORARIO = "call actualizar_horario(?,?,?,?,?)";
+    private static final String MOSTRAR_HORARIO_X_ID = "call mostrar_horario_x_id(?)";
+    private static final String VISTA_HORARIO = "select * from keed_moviles.vista_horario";
+    private static final String ELIMINAR_HORARIO = "call eliminar_horario(?)";
 
     public void insertar_horario(Horario horario) throws NoDataException, GlobalException {
         conectar();

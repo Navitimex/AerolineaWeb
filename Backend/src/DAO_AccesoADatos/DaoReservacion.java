@@ -10,11 +10,11 @@ import LogicaDeNegocio.Reservacion;
 
 public class DaoReservacion extends Conexion {
 
-    private static final String INSERTAR_RESERVACION_IDA_VUELTA = "{call insertar_reservacion_ida_vuelta(?,?)}";
-    private static final String ACTUALIZAR_CLIENTE = "{call actualizar_cliente(?,?,?)}";
-    private static final String MOSTRAR_RESERVACION_X_ID = "{call mostrar_reservacion_x_id(?)}";
-    private static final String VISTA_RESERVACION = "{select * from keed_moviles.vista_reservacion}";
-    private static final String ELIMINAR_RESERVACION = "{call eliminar_reservacion(?)}";
+    private static final String INSERTAR_RESERVACION_IDA_VUELTA = "call insertar_reservacion_ida_vuelta(?,?)";
+    private static final String ACTUALIZAR_CLIENTE = "call actualizar_cliente(?,?,?)";
+    private static final String MOSTRAR_RESERVACION_X_ID = "call mostrar_reservacion_x_id(?)";
+    private static final String VISTA_RESERVACION = "select * from keed_moviles.vista_reservacion";
+    private static final String ELIMINAR_RESERVACION = "call eliminar_reservacion(?)";
 
     public void insertar_reservacion_ida_vuelta(Reservacion reservacion) throws NoDataException, GlobalException {
         conectar();

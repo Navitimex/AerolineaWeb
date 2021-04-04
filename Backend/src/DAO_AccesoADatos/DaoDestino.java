@@ -10,11 +10,11 @@ import java.util.ArrayList;
 
 public class DaoDestino extends Conexion {
 
-    private static final String INSERTAR_DESTINO = "{call insertar_destino(?,?)}";
-    private static final String ACTUALIZAR_DESTINO = "{call actualizar_destino(?,?)}";
-    private static final String MOSTRAR_DESTINO_X_ID = "{call mostrar_destino_x_id(?)}";
-    private static final String VISTA_DESTINO = "{select * from keed_moviles.vista_destinos}";
-    private static final String ELIMINAR_DESTINO = "{call eliminar_detino(?)}";
+    private static final String INSERTAR_DESTINO = "call insertar_destino(?,?)";
+    private static final String ACTUALIZAR_DESTINO = "call actualizar_destino(?,?)";
+    private static final String MOSTRAR_DESTINO_X_ID = "call mostrar_destino_x_id(?)";
+    private static final String VISTA_DESTINO = "select * from keed_moviles.vista_destinos";
+    private static final String ELIMINAR_DESTINO = "call eliminar_detino(?)";
 
     public void insertar_destino(Destino destino) throws NoDataException, GlobalException {
         conectar();
