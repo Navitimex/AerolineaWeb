@@ -5,19 +5,19 @@ import org.json.JSONObject;
 public class Vuelo {
 
     private int id;
-    private int Horario_id;
-    private int Ruta_codigo;
-    private int Avion_id;
+    private Horario Horario_id;
+    //private Ruta Ruta_codigo;
+    private Avion Avion_id;
 
     @Override
     public String toString() {
-        return "Vuelo{" + "id=" + id + ", horario_id=" + Horario_id + ", ruta_codigo=" + Ruta_codigo + ", avion_id=" + Avion_id + '}';
+        return "Vuelo{" + "id=" + id + ", horario_id=" + Horario_id +  ", avion_id=" + Avion_id + '}'+'\n';
     }
 
-    public Vuelo(int id, int Horario_id, int Ruta_codigo, int Avion_id) {
+    public Vuelo(int id, Horario Horario_id, Ruta Ruta_codigo, Avion Avion_id) {
         this.id = id;
         this.Horario_id = Horario_id;
-        this.Ruta_codigo = Ruta_codigo;
+        //this.Ruta_codigo = Ruta_codigo;
         this.Avion_id = Avion_id;
     }
 
@@ -28,7 +28,7 @@ public class Vuelo {
         JSONObject r = new JSONObject();
         r.put("id", getId());
         r.put("avion", getHorario_id());
-        r.put("ruta", getRuta_codigo());
+       // r.put("ruta", getRuta_codigo());
         r.put("horario", getAvion_id());
         return r;
     }
@@ -41,27 +41,27 @@ public class Vuelo {
         this.id = id;
     }
 
-    public int getHorario_id() {
+    public Horario getHorario_id() {
         return Horario_id;
     }
 
-    public void setHorario_id(int horario_id) {
+    public void setHorario_id(Horario horario_id) {
         this.Horario_id = horario_id;
     }
 
-    public int getRuta_codigo() {
-        return Ruta_codigo;
-    }
+//    public Ruta getRuta_codigo() {
+//        return Ruta_codigo;
+//    }
+//
+//    public void setRuta_codigo(Ruta ruta_codigo) {
+//        this.Ruta_codigo = ruta_codigo;
+//    }
 
-    public void setRuta_codigo(int ruta_codigo) {
-        this.Ruta_codigo = ruta_codigo;
-    }
-
-    public int getAvion_id() {
+    public Avion getAvion_id() {
         return Avion_id;
     }
 
-    public void setAvion_id(int avion_id) {
+    public void setAvion_id(Avion avion_id) {
         this.Avion_id = avion_id;
     }
 

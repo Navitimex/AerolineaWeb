@@ -2,10 +2,10 @@ package LogicaDeNegocio;
 
 public class Destino {
 
-    private String codigo;
+    private int codigo;
     private String nombre;
 
-    public Destino(String codigo, String nombre) {
+    public Destino(int codigo, String nombre) {
         this.codigo = codigo;
         this.nombre = nombre;
     }
@@ -15,14 +15,14 @@ public class Destino {
 
     @Override
     public String toString() {
-        return "Destino{" + "codigo=" + codigo + ", nombre=" + nombre + '}';
+        return "Destino{" + "codigo=" + codigo + ", nombre=" + nombre + '}'+"\n";
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 

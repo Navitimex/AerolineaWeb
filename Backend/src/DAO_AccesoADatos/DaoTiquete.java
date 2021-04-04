@@ -3,6 +3,8 @@ package DAO_AccesoADatos;
 import Excepciones.GlobalException;
 import Excepciones.NoDataException;
 import LogicaDeNegocio.Tiquete;
+import Model.ModelCliente;
+import Model.ModelVuelo;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,8 +26,8 @@ public class DaoTiquete extends Conexion {
         try {
             pstmt = cnx.prepareCall(INSERTAR_TIQUETE);
             pstmt.setInt(1, tiquete.getId());
-            pstmt.setInt(2, tiquete.getVuelo_id());
-            pstmt.setInt(3, tiquete.getCliente_id());
+            pstmt.setInt(2, tiquete.getVuelo_id().getId());
+            pstmt.setInt(3, tiquete.getCliente_id().getId());
             pstmt.setInt(4, tiquete.getNumero_asiento());
             boolean resultado = pstmt.execute();
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
@@ -55,8 +57,8 @@ public class DaoTiquete extends Conexion {
         try {
             pstmt = cnx.prepareCall(ACTUALIZAR_TIQUETE);
             pstmt.setInt(1, tiquete.getId());
-            pstmt.setInt(2, tiquete.getVuelo_id());
-            pstmt.setInt(3, tiquete.getCliente_id());
+            pstmt.setInt(2, tiquete.getVuelo_id().getId());
+            pstmt.setInt(3, tiquete.getCliente_id().getId());
             pstmt.setInt(4, tiquete.getNumero_asiento());
             boolean resultado = pstmt.execute();
 
@@ -120,8 +122,8 @@ public class DaoTiquete extends Conexion {
             rs.next();
             tiquete = new Tiquete(
                     rs.getInt("id"),
-                    rs.getInt("Vuelo_id"),
-                    rs.getInt("Cliente_id"),
+                    ModelVuelo.getInstance().consultar(rs.getInt("Vuelo_id")),
+                    ModelCliente.getInstance().consultar(rs.getInt("Cliente_id")),
                     rs.getInt("numero_asiento"));
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
         } catch (SQLException e) {
@@ -161,8 +163,8 @@ public class DaoTiquete extends Conexion {
             while (rs.next()) {
                 tiquete = new Tiquete(
                     rs.getInt("id"),
-                    rs.getInt("Vuelo_id"),
-                    rs.getInt("Cliente_id"),
+                    ModelVuelo.getInstance().consultar(rs.getInt("Vuelo_id")),
+                    ModelCliente.getInstance().consultar(rs.getInt("Cliente_id")),
                     rs.getInt("numero_asiento"));
                 coleccion.add(tiquete);
             }

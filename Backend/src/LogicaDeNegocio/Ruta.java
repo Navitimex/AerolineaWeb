@@ -4,9 +4,9 @@ import java.sql.Time;
 
 public class Ruta {
 
-    private String codigo;
-    private String origen;
-    private String destino;
+    private int codigo;
+    private Destino origen;
+    private Destino destino;
     private Time duracionMin;
     private float precio;
     private float descuento;
@@ -14,7 +14,14 @@ public class Ruta {
     public Ruta() {
     }
 
-    public Ruta(String codigo, String origen, String destino, Time duracionMin, float precio, float descuento) {
+    public Ruta(
+            int codigo, 
+            Destino origen, 
+            Destino destino, 
+            Time duracionMin, 
+            float precio, 
+            float descuento
+    ) {
         this.codigo = codigo;
         this.origen = origen;
         this.destino = destino;
@@ -25,30 +32,30 @@ public class Ruta {
 
     @Override
     public String toString() {
-        return "Ruta{" + "codigo=" + codigo + ", origen=" + origen + ", destino=" + destino + ", duracionMin=" + duracionMin + ", precio=" + precio + ", descuento=" + descuento + '}';
+        return "Ruta{" + "codigo=" + codigo +"\n\t"+ ", origen=" + origen +"\t"+ ", destino=" + destino + ", duracionMin=" + duracionMin + ", precio=" + precio + ", descuento=" + descuento + '}'+"\n";
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public String getOrigen() {
+    public Destino getOrigen() {
         return origen;
     }
 
-    public void setOrigen(String origen) {
+    public void setOrigen(Destino origen) {
         this.origen = origen;
     }
 
-    public String getDestino() {
+    public Destino getDestino() {
         return destino;
     }
 
-    public void setDestino(String destino) {
+    public void setDestino(Destino destino) {
         this.destino = destino;
     }
 

@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import LogicaDeNegocio.Reservacion;
+import Model.ModelCliente;
+import Model.ModelReservacion;
+import Model.ModelTiquete;
 
 public class DaoReservacion extends Conexion {
 
@@ -21,8 +24,8 @@ public class DaoReservacion extends Conexion {
         CallableStatement pstmt = null;
         try {
             pstmt = cnx.prepareCall(INSERTAR_RESERVACION_IDA_VUELTA);
-            pstmt.setInt(1, reservacion.getIda());
-            pstmt.setInt(2, reservacion.getVuelta());
+            pstmt.setInt(1, reservacion.getIda().getId());
+            pstmt.setInt(2, reservacion.getVuelta().getId());
             boolean resultado = pstmt.execute();
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
             if (resultado == true) {
@@ -50,9 +53,9 @@ public class DaoReservacion extends Conexion {
         CallableStatement pstmt = null;
         try {
             pstmt = cnx.prepareCall(ACTUALIZAR_CLIENTE);
-            pstmt.setInt(2, reservacion.getIda());
-            pstmt.setInt(3, reservacion.getVuelta());
-            pstmt.setInt(4, reservacion.getCliente_id());
+            pstmt.setInt(2, reservacion.getIda().getId());
+            pstmt.setInt(3, reservacion.getVuelta().getId());
+            pstmt.setInt(4, reservacion.getCliente_id().getId());
             boolean resultado = pstmt.execute();
 
             if (resultado == true) {
@@ -115,9 +118,10 @@ public class DaoReservacion extends Conexion {
             rs.next();
             reservacion = new Reservacion(
                     rs.getInt("id"),
-                    rs.getInt("ida"),
-                    rs.getInt("vuelta"),
-                    rs.getInt("Cliente_id"));
+                    ModelTiquete.getInstance().consultar(rs.getInt("ida")),
+                   // ModelTiquete.getInstance().consultar(rs.getInt("vuelta")),
+                    ModelCliente.getInstance().consultar(rs.getInt("Cliente_id")) 
+            );
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
         } catch (SQLException e) {
             e.printStackTrace();
@@ -156,9 +160,10 @@ public class DaoReservacion extends Conexion {
             while (rs.next()) {
                 reservacion = new Reservacion(
                         rs.getInt("id"),
-                        rs.getInt("ida"),
-                        rs.getInt("vuelta"),
-                        rs.getInt("Cliente_id"));
+                    ModelTiquete.getInstance().consultar(rs.getInt("ida")),
+                    ModelTiquete.getInstance().consultar(rs.getInt("vuelta")),
+                    ModelCliente.getInstance().consultar(rs.getInt("Cliente_id")) 
+                );
                 coleccion.add(reservacion);
             }
             // <editor-fold defaultstate="collapsed" desc="Excepciones">

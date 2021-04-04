@@ -40,7 +40,7 @@ public class Avion {
 
     @Override
     public String toString() {
-        return "Avion{" + "id=" + id + ", anio=" + anio + ", can_asientos=" + can_asientos + ", modelo=" + modelo + ", marca=" + marca + '}';
+        return "Avion{" + "id=" + id + ", anio=" + anio + ", can_asientos=" + can_asientos + ", modelo=" + modelo + ", marca=" + marca +'}'+"\n";
     }
 
     public int getId() {

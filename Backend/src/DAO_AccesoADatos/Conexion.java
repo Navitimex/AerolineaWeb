@@ -19,7 +19,7 @@ public class Conexion {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/keed_moviles", "root", "root");
-            System.out.println("Coneccion Satisfactoria");
+           // System.out.println("Coneccion Satisfactoria");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error de coneccion: " + e);
         }
@@ -29,7 +29,7 @@ public class Conexion {
         try {
             if (!cnx.isClosed()) {
                 cnx.close();
-                System.out.println("Desconeccion Satisfactoria ");
+               // System.out.println("Desconeccion Satisfactoria ");
             }
         } catch (SQLException ex) {
             System.out.println("Error de coneccion: " + ex);

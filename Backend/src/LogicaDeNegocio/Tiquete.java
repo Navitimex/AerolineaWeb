@@ -3,16 +3,16 @@ package LogicaDeNegocio;
 public class Tiquete {
 
     private int id;
-    private int Vuelo_id;
-    private int Cliente_id;
+    private Vuelo Vuelo_id;
+    private Cliente Cliente_id;
     private int numero_asiento;
 
     @Override
     public String toString() {
-        return "Tiquete{" + "id=" + id + ", vuelo_id=" + Vuelo_id + ", cliente_id=" + Cliente_id + ", numero_asientos=" + numero_asiento + '}';
+        return "Tiquete{" + "id=" + id + '\n'+ ", vuelo_id=" + Vuelo_id + ", cliente_id=" + Cliente_id + ", numero_asientos=" + numero_asiento + '}'+'\n';
     }
 
-    public Tiquete(int id, int vuelo_id, int cliente_id, int numero_asiento) {
+    public Tiquete(int id, Vuelo vuelo_id, Cliente cliente_id, int numero_asiento) {
         this.id = id;
         this.Vuelo_id = vuelo_id;
         this.Cliente_id = cliente_id;
@@ -30,19 +30,19 @@ public class Tiquete {
         this.id = id;
     }
 
-    public int getVuelo_id() {
+    public Vuelo getVuelo_id() {
         return Vuelo_id;
     }
 
-    public void setVuelo_id(int vuelo_id) {
+    public void setVuelo_id(Vuelo vuelo_id) {
         this.Vuelo_id = vuelo_id;
     }
 
-    public int getCliente_id() {
+    public Cliente getCliente_id() {
         return Cliente_id;
     }
 
-    public void setCliente_id(int cliente_id) {
+    public void setCliente_id(Cliente cliente_id) {
         this.Cliente_id = cliente_id;
     }
 

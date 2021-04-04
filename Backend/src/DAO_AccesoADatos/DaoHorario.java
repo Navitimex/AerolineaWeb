@@ -3,6 +3,7 @@ package DAO_AccesoADatos;
 import Excepciones.GlobalException;
 import Excepciones.NoDataException;
 import LogicaDeNegocio.Horario;
+import Model.ModelRuta;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,7 +25,7 @@ public class DaoHorario extends Conexion {
             pstmt.setString(1, horario.getDia_semana());
             pstmt.setTime(2, horario.getHora_salida());
             pstmt.setTime(3, horario.getHora_llegada());
-            pstmt.setString(4, horario.getRuta_codigo());
+            pstmt.setInt(4, horario.getRuta_codigo().getCodigo());
             boolean resultado = pstmt.execute();
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
             if (resultado == true) {
@@ -55,7 +56,7 @@ public class DaoHorario extends Conexion {
             pstmt.setString(1, horario.getDia_semana());
             pstmt.setTime(2, horario.getHora_salida());
             pstmt.setTime(3, horario.getHora_llegada());
-            pstmt.setString(4, horario.getRuta_codigo());
+            pstmt.setInt(4, horario.getRuta_codigo().getCodigo());
             boolean resultado = pstmt.execute();
 
             if (resultado == true) {
@@ -104,7 +105,7 @@ public class DaoHorario extends Conexion {
         // </editor-fold>
     }
 
-    public Horario mostrar_horario_x_id(String id) throws GlobalException, NoDataException {
+    public Horario mostrar_horario_x_id(int id) throws GlobalException, NoDataException {
         conectar();
         ResultSet rs = null;
         Horario horario = null;
@@ -112,7 +113,7 @@ public class DaoHorario extends Conexion {
         try {
             pstmt = cnx.prepareCall(MOSTRAR_HORARIO_X_ID);
             pstmt.clearParameters();
-            pstmt.setString(1, id);
+            pstmt.setInt(1, id);
             //pstmt.execute();
             rs = pstmt.executeQuery();
             rs.next();
@@ -121,7 +122,8 @@ public class DaoHorario extends Conexion {
                     rs.getString("dia_semana"),
                     rs.getTime("hora_salida"),
                     rs.getTime("hora_llegada"),
-                    rs.getString("Ruta_codigo"));
+                    ModelRuta.getInstance().consultar(rs.getInt("Ruta_codigo"))
+            );
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
         } catch (SQLException e) {
             e.printStackTrace();
@@ -163,7 +165,8 @@ public class DaoHorario extends Conexion {
                     rs.getString("dia_semana"),
                     rs.getTime("hora_salida"),
                     rs.getTime("hora_llegada"),
-                    rs.getString("Ruta_codigo"));
+                    ModelRuta.getInstance().consultar(rs.getInt("Ruta_codigo"))
+                );
                 coleccion.add(horario);
             }
             // <editor-fold defaultstate="collapsed" desc="Excepciones">

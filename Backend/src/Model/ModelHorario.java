@@ -63,7 +63,7 @@ public class ModelHorario extends Observable implements ModelInterface<Horario> 
     public Horario consultar(Object e) {
         Horario horario = null;
         try {
-            horario = daoHorario.mostrar_horario_x_id((String) e);
+            horario = daoHorario.mostrar_horario_x_id((int) e);
         } catch (NoDataException | GlobalException noDataException) {
         }
         return horario;

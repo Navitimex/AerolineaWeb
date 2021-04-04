@@ -18,13 +18,25 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", contrasena=" + contrasena + ", rol=" + rol + ", nombre=" + nombre + ", apellidos=" + apellidos + ", correo=" + correo + ", fec_naci=" + fec_naci + ", direccion=" + direccion + ", tel_trabajo=" + tel_trabajo + ", tel_cel=" + tel_cel + '}';
+        return "Cliente{" + "id=" + id + ", contrasena=" + contrasena + ", rol=" + rol + ", nombre=" + nombre + ", apellidos=" + apellidos + ", correo=" + correo + ", fec_naci=" + fec_naci + ", direccion=" + direccion + ", tel_trabajo=" + tel_trabajo + ", tel_cel=" + tel_cel + '}'+"\n";
     }
 
     public Cliente() {
     }
 
-    public Cliente(int id, String contrasena, int rol, String nombre, String apellidos, String correo, Date fec_naci, String direccion, String tel_trabajo, String tel_cel) {
+    public Cliente(
+            int id, 
+            String contrasena, 
+            int rol, 
+            String nombre, 
+            String apellidos, 
+            String correo, 
+            Date fec_naci, 
+            String direccion, 
+            String tel_trabajo, 
+            String tel_cel
+    ) {
+        
         this.id = id;
         this.contrasena = contrasena;
         this.rol = rol;

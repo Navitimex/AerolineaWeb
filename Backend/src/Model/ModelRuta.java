@@ -51,7 +51,7 @@ public class ModelRuta extends Observable implements ModelInterface<Ruta> {
     @Override
     public void eliminar(Object e) {
         try {
-            daoRuta.eliminar_ruta((String) e);
+            daoRuta.eliminar_ruta((int) e);
             listRuta = daoRuta.vista_ruta();
             setChanged();
             notifyObservers();
@@ -63,7 +63,7 @@ public class ModelRuta extends Observable implements ModelInterface<Ruta> {
     public Ruta consultar(Object e) {
         Ruta ruta = null;
         try {
-            ruta = daoRuta.mostrar_ruta_x_id((String) e);
+            ruta = daoRuta.mostrar_ruta_x_id((int) e);
         } catch (NoDataException | GlobalException noDataException) {
         }
         return ruta;

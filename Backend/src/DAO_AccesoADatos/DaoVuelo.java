@@ -3,6 +3,9 @@ package DAO_AccesoADatos;
 import Excepciones.GlobalException;
 import Excepciones.NoDataException;
 import LogicaDeNegocio.Vuelo;
+import Model.ModelAvion;
+import Model.ModelHorario;
+import Model.ModelRuta;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +14,7 @@ import java.util.ArrayList;
 public class DaoVuelo extends Conexion {
 
     private static final String INSERTAR_VUELO = "call insertar_vuelo(?,?)";
-    private static final String ACTUALIZAR_VUELO = "call actualizar_vuelo(?,?,?,?)";
+    private static final String ACTUALIZAR_VUELO = "call actualizar_vuelo(?,?)";
     private static final String CONSULTA_VUELO_X_ID = "call mostrar_vuelo_x_id(?)";
     private static final String VISTA_VUELO = "select * from keed_moviles.vista_vuelo";
     private static final String ELIMINAR_VUELO = "call eliminar_vuelo(?)";
@@ -21,8 +24,9 @@ public class DaoVuelo extends Conexion {
         CallableStatement pstmt = null;
         try {
             pstmt = cnx.prepareCall(INSERTAR_VUELO);
-            pstmt.setInt(1, vuelo.getHorario_id());
-            pstmt.setInt(2, vuelo.getAvion_id());
+            pstmt.setInt(1, vuelo.getHorario_id().getId());
+           // pstmt.setInt(2, vuelo.getRuta_codigo().getCodigo());
+            pstmt.setInt(2, vuelo.getAvion_id().getId());
             boolean resultado = pstmt.execute();
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
             if (resultado == true) {
@@ -50,8 +54,9 @@ public class DaoVuelo extends Conexion {
         CallableStatement pstmt = null;
         try {
             pstmt = cnx.prepareCall(ACTUALIZAR_VUELO);
-            pstmt.setInt(1, vuelo.getHorario_id());
-            pstmt.setInt(2, vuelo.getAvion_id());
+            pstmt.setInt(1, vuelo.getHorario_id().getId());
+            //pstmt.setInt(2, vuelo.getRuta_codigo().getCodigo());
+            pstmt.setInt(3, vuelo.getAvion_id().getId());
             boolean resultado = pstmt.execute();
 
             if (resultado == true) {
@@ -114,9 +119,10 @@ public class DaoVuelo extends Conexion {
             rs.next();
             vuelo = new Vuelo(
                     rs.getInt("id"),
-                    rs.getInt("Horario_id"),
-                    rs.getInt("Ruta_codigo"),
-                    rs.getInt("Avion_id"));
+                    ModelHorario.getInstance().consultar(rs.getInt("Horario_id")),
+                    ModelRuta.getInstance().consultar(rs.getInt("Ruta_codigo")),
+                    ModelAvion.getInstance().consultar(rs.getInt("Avion_id"))
+            );
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
         } catch (SQLException e) {
             e.printStackTrace();
@@ -155,9 +161,9 @@ public class DaoVuelo extends Conexion {
             while (rs.next()) {
                 vuelo = new Vuelo(
                         rs.getInt("id"),
-                        rs.getInt("Horario_id"),
-                        rs.getInt("Ruta_codigo"),
-                        rs.getInt("Avion_id"));
+                        ModelHorario.getInstance().consultar(rs.getInt("Horario_id")),
+                        ModelRuta.getInstance().consultar(rs.getInt("Ruta_codigo")),
+                        ModelAvion.getInstance().consultar(rs.getInt("Avion_id")));
                 coleccion.add(vuelo);
             }
             // <editor-fold defaultstate="collapsed" desc="Excepciones">

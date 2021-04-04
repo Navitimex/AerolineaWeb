@@ -12,7 +12,7 @@ public class DaoDestino extends Conexion {
 
     private static final String INSERTAR_DESTINO = "call insertar_destino(?,?)";
     private static final String ACTUALIZAR_DESTINO = "call actualizar_destino(?,?)";
-    private static final String MOSTRAR_DESTINO_X_ID = "call mostrar_destino_x_id(?)";
+    private static final String MOSTRAR_DESTINO_X_ID = "call mostrar_destinos_x_id(?)";
     private static final String VISTA_DESTINO = "select * from keed_moviles.vista_destinos";
     private static final String ELIMINAR_DESTINO = "call eliminar_detino(?)";
 
@@ -21,7 +21,7 @@ public class DaoDestino extends Conexion {
         CallableStatement pstmt = null;
         try {
             pstmt = cnx.prepareCall(INSERTAR_DESTINO);
-            pstmt.setString(1, destino.getCodigo());
+            pstmt.setInt(1, destino.getCodigo());
             pstmt.setString(2, destino.getNombre());
             boolean resultado = pstmt.execute();
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
@@ -49,7 +49,7 @@ public class DaoDestino extends Conexion {
         CallableStatement pstmt = null;
         try {
             pstmt = cnx.prepareCall(ACTUALIZAR_DESTINO);
-            pstmt.setString(1, destino.getCodigo());
+            pstmt.setInt(1, destino.getCodigo());
             pstmt.setString(2, destino.getNombre());
             boolean resultado = pstmt.execute();
 
@@ -112,7 +112,7 @@ public class DaoDestino extends Conexion {
             rs = pstmt.executeQuery();
             rs.next();
             destino = new Destino(
-                    rs.getString("codigo"),
+                    rs.getInt("codigo"),
                     rs.getString("nombre"));
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
         } catch (SQLException e) {
@@ -151,7 +151,7 @@ public class DaoDestino extends Conexion {
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 destino = new Destino(
-                        rs.getString("codigo"),
+                        rs.getInt("codigo"),
                         rs.getString("nombre"));
                 coleccion.add(destino);
             }

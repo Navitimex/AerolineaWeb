@@ -8,14 +8,14 @@ public class Horario {
     private String dia_semana;
     private Time hora_salida;
     private Time hora_llegada;
-    private String ruta_codigo;
+    private Ruta ruta_codigo;
 
     @Override
     public String toString() {
-        return "Horario{" + "id=" + id + ", dia_semana=" + dia_semana + ", hora_salida=" + hora_salida + ", hora_llegada=" + hora_llegada + ", ruta_codigo=" + ruta_codigo + '}';
+        return "Horario{" + "id=" + id + ", dia_semana=" + dia_semana + ", hora_salida=" + hora_salida + ", hora_llegada=" + hora_llegada + ", ruta_codigo=" + ruta_codigo + '}'+'\n';
     }
 
-    public Horario(int id, String dia_semana, Time hora_salida, Time hora_llegada, String ruta_codigo) {
+    public Horario(int id, String dia_semana, Time hora_salida, Time hora_llegada, Ruta ruta_codigo) {
         this.id = id;
         this.dia_semana = dia_semana;
         this.hora_salida = hora_salida;
@@ -58,11 +58,11 @@ public class Horario {
         this.hora_llegada = hora_llegada;
     }
 
-    public String getRuta_codigo() {
+    public Ruta getRuta_codigo() {
         return ruta_codigo;
     }
 
-    public void setRuta_codigo(String ruta_codigo) {
+    public void setRuta_codigo(Ruta ruta_codigo) {
         this.ruta_codigo = ruta_codigo;
     }
 

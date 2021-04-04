@@ -3,6 +3,7 @@ package DAO_AccesoADatos;
 import Excepciones.GlobalException;
 import Excepciones.NoDataException;
 import LogicaDeNegocio.Ruta;
+import Model.ModelDestino;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,19 +14,17 @@ public class DaoRuta extends Conexion {
     private static final String INSERTAR_RUTA = "call insertar_ruta(?,?,?,?,?,?)";
     private static final String ACTUALIZAR_RUTA = "call actualizar_ruta(?,?,?,?,?,?)";
     private static final String MOSTRAR_RUTA_X_ID = "call mostrar_ruta_x_id(?)";
-    private static final String VISTA_RUTA = "select * from keed_moviles.vista_destinos";
+    private static final String VISTA_RUTA = "select * from keed_moviles.vista_ruta";
     private static final String ELIMINAR_RUTA = "call elimiar_ruta(?)";
-
-
 
     public void insertar_ruta(Ruta ruta) throws NoDataException, GlobalException {
         conectar();
         CallableStatement pstmt = null;
         try {
             pstmt = cnx.prepareCall(INSERTAR_RUTA);
-            pstmt.setString(1, ruta.getCodigo());
-            pstmt.setString(2, ruta.getOrigen());
-            pstmt.setString(3, ruta.getDestino());
+            pstmt.setInt(1, ruta.getCodigo());
+            pstmt.setInt(2, ruta.getOrigen().getCodigo());
+            pstmt.setInt(3, ruta.getDestino().getCodigo());
             pstmt.setTime(4, ruta.getDuracionMin());
             pstmt.setFloat(5, ruta.getPrecio());
             pstmt.setFloat(6, ruta.getDescuento());
@@ -56,9 +55,9 @@ public class DaoRuta extends Conexion {
         CallableStatement pstmt = null;
         try {
             pstmt = cnx.prepareCall(ACTUALIZAR_RUTA);
-            pstmt.setString(1, ruta.getCodigo());
-            pstmt.setString(2, ruta.getOrigen());
-            pstmt.setString(3, ruta.getDestino());
+            pstmt.setInt(1, ruta.getCodigo());
+            pstmt.setInt(2, ruta.getOrigen().getCodigo());
+            pstmt.setInt(3, ruta.getDestino().getCodigo());
             pstmt.setTime(4, ruta.getDuracionMin());
             pstmt.setFloat(5, ruta.getPrecio());
             pstmt.setFloat(6, ruta.getDescuento());
@@ -83,13 +82,13 @@ public class DaoRuta extends Conexion {
         // </editor-fold>
     }
 
-    public void eliminar_ruta(String ruta) throws GlobalException, NoDataException {
+    public void eliminar_ruta(int ruta) throws GlobalException, NoDataException {
         conectar();
         CallableStatement pstmt = null;
 
         try {
             pstmt = cnx.prepareCall(ELIMINAR_RUTA);
-            pstmt.setString(1, ruta);
+            pstmt.setInt(1, ruta);
             boolean resultado = pstmt.execute();
             if (resultado == true) {
                 throw new NoDataException("No se elimino el ruta");
@@ -110,7 +109,7 @@ public class DaoRuta extends Conexion {
         // </editor-fold>
     }
 
-    public Ruta mostrar_ruta_x_id(String id) throws GlobalException, NoDataException {
+    public Ruta mostrar_ruta_x_id(int id) throws GlobalException, NoDataException {
         conectar();
         ResultSet rs = null;
         Ruta ruta = null;
@@ -118,17 +117,17 @@ public class DaoRuta extends Conexion {
         try {
             pstmt = cnx.prepareCall(MOSTRAR_RUTA_X_ID);
             pstmt.clearParameters();
-            pstmt.setString(1, id);
+            pstmt.setInt(1, id);
             //pstmt.execute();
             rs = pstmt.executeQuery();
             rs.next();
             ruta = new Ruta(
-                    rs.getString("codigo"),
-                    rs.getString("origen"),
-                    rs.getString("destino"),
+                    rs.getInt("codigo"),
+                    ModelDestino.getInstance().consultar(rs.getInt("origen")),
+                    ModelDestino.getInstance().consultar(rs.getInt("destino")),
                     rs.getTime("duracionMin"),
-                    rs.getInt("precio"),
-                    rs.getInt("descuento"));
+                    rs.getFloat("precio"),
+                    rs.getFloat("descuento"));
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
         } catch (SQLException e) {
             e.printStackTrace();
@@ -166,12 +165,12 @@ public class DaoRuta extends Conexion {
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 ruta = new Ruta(
-                        rs.getString("codigo"),
-                        rs.getString("origen"),
-                        rs.getString("destino"),
+                        rs.getInt("codigo"),
+                        ModelDestino.getInstance().consultar(rs.getInt("origen")),
+                        ModelDestino.getInstance().consultar(rs.getInt("destino")),
                         rs.getTime("duracionMin"),
-                        rs.getInt("precio"),
-                        rs.getInt("descuento"));
+                        rs.getFloat("precio"),
+                        rs.getFloat("descuento"));
                 coleccion.add(ruta);
             }
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
