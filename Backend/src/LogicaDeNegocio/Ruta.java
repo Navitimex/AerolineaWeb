@@ -4,9 +4,9 @@ import java.sql.Time;
 
 public class Ruta {
 
-    private int codigo;
-    private int origen;
-    private int destino;
+    private String codigo;
+    private String origen;
+    private String destino;
     private Time duracionMin;
     private float precio;
     private float descuento;
@@ -14,7 +14,7 @@ public class Ruta {
     public Ruta() {
     }
 
-    public Ruta(int codigo, int origen, int destino, Time duracionMin, float precio, float descuento) {
+    public Ruta(String codigo, String origen, String destino, Time duracionMin, float precio, float descuento) {
         this.codigo = codigo;
         this.origen = origen;
         this.destino = destino;
@@ -28,27 +28,27 @@ public class Ruta {
         return "Ruta{" + "codigo=" + codigo + ", origen=" + origen + ", destino=" + destino + ", duracionMin=" + duracionMin + ", precio=" + precio + ", descuento=" + descuento + '}';
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
-    public int getOrigen() {
+    public String getOrigen() {
         return origen;
     }
 
-    public void setOrigen(int origen) {
+    public void setOrigen(String origen) {
         this.origen = origen;
     }
 
-    public int getDestino() {
+    public String getDestino() {
         return destino;
     }
 
-    public void setDestino(int destino) {
+    public void setDestino(String destino) {
         this.destino = destino;
     }
 

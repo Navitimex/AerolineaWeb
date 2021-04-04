@@ -132,7 +132,7 @@ public class DaoDestino extends Conexion {
                 throw new GlobalException("Estatutos invalidos o nulos");
             }
         }
-        if (pais == null) {
+        if (destino == null) {
             throw new NoDataException("No hay datos");
         }
         // </editor-fold>

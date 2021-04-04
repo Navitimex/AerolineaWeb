@@ -100,7 +100,7 @@ public class DaoVuelo extends Conexion {
         // </editor-fold>
     }
 
-    public Vuelo consultar_Vuelo_x_id(int id) throws GlobalException, NoDataException {
+    public Vuelo mostrar_vuelo_x_id(int id) throws GlobalException, NoDataException {
         conectar();
         ResultSet rs = null;
         Vuelo vuelo = null;
