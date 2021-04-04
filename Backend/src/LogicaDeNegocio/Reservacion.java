@@ -1,6 +1,8 @@
 package LogicaDeNegocio;
 
-public class Reserva {
+import org.json.JSONObject;
+
+public class Reservacion {
 
     private int id;
     private int ida;
@@ -12,14 +14,23 @@ public class Reserva {
         return "Reserva{" + "id=" + id + ", ida=" + ida + ", vuelta=" + vuelta + ", cliente_id=" + cliente_id + '}';
     }
 
-    public Reserva(int id, int ida, int vuelta, int cliente_id) {
+    public Reservacion(int id, int ida, int vuelta, int cliente_id) {
         this.id = id;
         this.ida = ida;
         this.vuelta = vuelta;
         this.cliente_id = cliente_id;
     }
 
-    public Reserva() {
+    public Reservacion() {
+    }
+    
+    public JSONObject toJSON() {
+        JSONObject r = new JSONObject();
+        r.put("id", getId());
+        r.put("ida", getIda());
+        r.put("vuelta", getVuelta());
+        r.put("Cliente_id", getCliente_id());
+        return r;
     }
 
     public int getId() {
