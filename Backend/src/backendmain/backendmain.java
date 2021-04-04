@@ -18,8 +18,9 @@ public class backendmain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-             ModelAvion.getInstance().insertar(new Avion(23,234,"AIRBUS319","80",80));
-             
+             //ModelAvion.getInstance().insertar(new Avion(23,234,"AIRBUS319","80",80));
+              
+             System.out.println(ModelAvion.getInstance().listar());
     }
     
 }
