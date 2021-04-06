@@ -199,6 +199,9 @@ CREATE TABLE IF NOT EXISTS `Keed_moviles`.`Reservacion` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+insert into avion(id,anio,modelo,marca,can_asientos) values (12,"asda","asdad",80);
+call keed_moviles.insertar_avion(1998, 'david', 'toyota', 80);
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

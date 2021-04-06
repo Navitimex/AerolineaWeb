@@ -31,7 +31,6 @@ public class ModelAvion extends Observable implements ModelInterface<Avion> {
     public void insertar(Avion e) {
         try {
             daoAvion.insertar_avion(e);
-            //listAvion = daoAvion.listar_Avions();
             setChanged();
             notifyObservers();
         } catch (NoDataException | GlobalException noDataException) {
