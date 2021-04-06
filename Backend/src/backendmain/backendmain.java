@@ -25,7 +25,7 @@ public class backendmain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //ModelAvion.getInstance().insertar(new Avion(23,234,"AIRBUS319","80",80));
+       // ModelAvion.getInstance().insertar(new Avion(23,234,"AIRBUS319","80",80));
 
 //System.out.println(ModelAvion.getInstance().listar());
 //System.out.println(ModelAvion.getInstance().consultar(5));
@@ -48,8 +48,8 @@ public class backendmain {
 //System.out.println(ModelTiquete.getInstance().listar());
 //System.out.println(ModelTiquete.getInstance().consultar(14));
 
-System.out.println(ModelReservacion.getInstance().listar());
-System.out.println(ModelReservacion.getInstance().consultar(2));
+//System.out.println(ModelReservacion.getInstance().listar());
+//System.out.println(ModelReservacion.getInstance().consultar(1));
 
 
 
