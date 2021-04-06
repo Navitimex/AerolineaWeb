@@ -7,26 +7,26 @@ public class Reservacion {
     private int id;
     private Tiquete ida;
     private Tiquete vuelta;
-    private Cliente cliente_id;
+   
 
     @Override
     public String toString() {
-        return "Reserva{" + "id=" + id + ", ida=" + ida + ", vuelta=" + vuelta + ", cliente_id=" + cliente_id + '}';
+        return "Reserva{" + "id=" + id + ", ida=" + ida + ", vuelta=" + vuelta  + '}';
     }
 
-    public Reservacion(int id, Tiquete ida, Tiquete vuelta, Cliente cliente_id) {
+    public Reservacion(int id, Tiquete ida, Tiquete vuelta) {
         this.id = id;
         this.ida = ida;
         this.vuelta = vuelta;
-        this.cliente_id = cliente_id;
+       // this.cliente_id = cliente_id;
     }
 
-     public Reservacion(int id, Tiquete ida, Cliente cliente_id) {
-        this.id = id;
-        this.ida = ida;
-        this.vuelta = null;
-        this.cliente_id = cliente_id;
-    }
+//     public Reservacion(int id, Tiquete ida) {
+//        this.id = id;
+//        this.ida = ida;
+//        this.vuelta = null;
+//       // this.cliente_id = cliente_id;
+//    }
     
     public Reservacion() {
     }
@@ -36,7 +36,7 @@ public class Reservacion {
         r.put("id", getId());
         r.put("ida", getIda());
         r.put("vuelta", getVuelta());
-        r.put("Cliente_id", getCliente_id());
+       // r.put("Cliente_id", getCliente_id());
         return r;
     }
 
@@ -63,13 +63,13 @@ public class Reservacion {
     public void setVuelta(Tiquete vuelta) {
         this.vuelta = vuelta;
     }
-
-    public Cliente getCliente_id() {
-        return cliente_id;
-    }
-
-    public void setCliente_id(Cliente cliente_id) {
-        this.cliente_id = cliente_id;
-    }
+//
+//    public Cliente getCliente_id() {
+//        return cliente_id;
+//    }
+//
+//    public void setCliente_id(Cliente cliente_id) {
+//        this.cliente_id = cliente_id;
+//    }
 
 }

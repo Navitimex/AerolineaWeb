@@ -46,10 +46,18 @@ public class backendmain {
 //System.out.println(ModelVuelo.getInstance().consultar(9));
 
 //System.out.println(ModelTiquete.getInstance().listar());
-//System.out.println(ModelTiquete.getInstance().consultar(6));
+//System.out.println(ModelTiquete.getInstance().consultar(14));
 
-//System.out.println(ModelReservacion.getInstance().listar());
-System.out.println(ModelReservacion.getInstance().consultar(1));
+System.out.println(ModelReservacion.getInstance().listar());
+System.out.println(ModelReservacion.getInstance().consultar(2));
+
+
+
+
+
+
+
+
 
     }
 

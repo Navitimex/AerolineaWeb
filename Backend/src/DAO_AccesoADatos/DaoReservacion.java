@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import LogicaDeNegocio.Reservacion;
+import LogicaDeNegocio.Tiquete;
 import Model.ModelCliente;
 import Model.ModelReservacion;
 import Model.ModelTiquete;
@@ -14,7 +15,7 @@ import Model.ModelTiquete;
 public class DaoReservacion extends Conexion {
 
     private static final String INSERTAR_RESERVACION_IDA_VUELTA = "call insertar_reservacion_ida_vuelta(?,?)";
-    private static final String ACTUALIZAR_CLIENTE = "call actualizar_cliente(?,?,?)";
+    private static final String ACTUALIZAR_RESERVACION = "call actualizar_reservacion(?,?,?)";
     private static final String MOSTRAR_RESERVACION_X_ID = "call mostrar_reservacion_x_id(?)";
     private static final String VISTA_RESERVACION = "select * from keed_moviles.vista_reservacion";
     private static final String ELIMINAR_RESERVACION = "call eliminar_reservacion(?)";
@@ -52,10 +53,10 @@ public class DaoReservacion extends Conexion {
         conectar();
         CallableStatement pstmt = null;
         try {
-            pstmt = cnx.prepareCall(ACTUALIZAR_CLIENTE);
+            pstmt = cnx.prepareCall(ACTUALIZAR_RESERVACION);
             pstmt.setInt(2, reservacion.getIda().getId());
             pstmt.setInt(3, reservacion.getVuelta().getId());
-            pstmt.setInt(4, reservacion.getCliente_id().getId());
+            //pstmt.setInt(4, reservacion.getCliente_id().getId());
             boolean resultado = pstmt.execute();
 
             if (resultado == true) {
@@ -116,12 +117,23 @@ public class DaoReservacion extends Conexion {
             //pstmt.execute();
             rs = pstmt.executeQuery();
             rs.next();
-            reservacion = new Reservacion(
+              
+               // if(ModelTiquete.getInstance().consultar(rs.getInt("vuelta"))!=null){
+                 reservacion = new Reservacion(
                     rs.getInt("id"),
                     ModelTiquete.getInstance().consultar(rs.getInt("ida")),
-                   // ModelTiquete.getInstance().consultar(rs.getInt("vuelta")),
-                    ModelCliente.getInstance().consultar(rs.getInt("Cliente_id")) 
-            );
+                    ModelTiquete.getInstance().consultar(rs.getInt("vuelta"))
+                    //ModelCliente.getInstance().consultar(rs.getInt("Cliente_id")) 
+                );
+              //  }else{
+//                 reservacion = new Reservacion(
+//                    rs.getInt("id"),
+//                    ModelTiquete.getInstance().consultar(rs.getInt("ida"))
+//                    //ModelTiquete.getInstance().consultar(rs.getInt("vuelta")),
+//                   // ModelCliente.getInstance().consultar(rs.getInt("Cliente_id")) 
+//                );
+                             
+              //  }
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
         } catch (SQLException e) {
             e.printStackTrace();
@@ -158,12 +170,25 @@ public class DaoReservacion extends Conexion {
             //pstmt.execute();
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                reservacion = new Reservacion(
+                Tiquete tiquete = null; 
+              //  if(ModelTiquete.getInstance().consultar(rs.getInt("vuelta"))!=null){
+                 reservacion = new Reservacion(
                         rs.getInt("id"),
                     ModelTiquete.getInstance().consultar(rs.getInt("ida")),
-                    ModelTiquete.getInstance().consultar(rs.getInt("vuelta")),
-                    ModelCliente.getInstance().consultar(rs.getInt("Cliente_id")) 
+                    ModelTiquete.getInstance().consultar(rs.getInt("vuelta"))
+                   // ModelCliente.getInstance().consultar(rs.getInt("Cliente_id")) 
                 );
+                //}else{
+//                 reservacion = new Reservacion(
+//                    rs.getInt("id"),
+//                    ModelTiquete.getInstance().consultar(rs.getInt("ida"))
+//                    //ModelTiquete.getInstance().consultar(rs.getInt("vuelta")),
+//                   // ModelCliente.getInstance().consultar(rs.getInt("Cliente_id")) 
+//                );
+//                             
+                //}
+                
+               
                 coleccion.add(reservacion);
             }
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
