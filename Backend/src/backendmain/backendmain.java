@@ -26,7 +26,7 @@ public class backendmain {
      */
     public static void main(String[] args) {
         
-Avion avion= new Avion(2,12,"asda","asdad",80);
+//Avion avion= new Avion(2,12,"asda","asdad",80);
 
 
 //ModelAvion.getInstance().insertar(avion);
@@ -38,7 +38,7 @@ Avion avion= new Avion(2,12,"asda","asdad",80);
 //System.out.println(ModelDestino.getInstance().consultar(5));
 
 //System.out.println(ModelCliente.getInstance().listar());
-//System.out.println(ModelCliente.getInstance().consultar(5));
+System.out.println(ModelCliente.getInstance().consultar(2));
 
 //System.out.println(ModelRuta.getInstance().listar());
 //System.out.println(ModelRuta.getInstance().consultar(4));
@@ -53,7 +53,7 @@ Avion avion= new Avion(2,12,"asda","asdad",80);
 //System.out.println(ModelTiquete.getInstance().consultar(14));
 
 //System.out.println(ModelReservacion.getInstance().listar());
-System.out.println(ModelReservacion.getInstance().consultar(2));
+//System.out.println(ModelReservacion.getInstance().consultar(2));
 
 
 

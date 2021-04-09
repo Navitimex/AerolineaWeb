@@ -23,7 +23,6 @@ public class ModelCliente extends Observable implements ModelInterface<Cliente> 
     }
 
     private ModelCliente() {
-        listCliente = new ArrayList<Cliente>();
         daoCliente = new DaoCliente();
     }
 
@@ -41,7 +40,6 @@ public class ModelCliente extends Observable implements ModelInterface<Cliente> 
     public void modificar(Cliente e) {
         try {
             daoCliente.actualizar_cliente(e);
-            listCliente = daoCliente.vista_cliente();
             setChanged();
             notifyObservers();
         } catch (NoDataException | GlobalException noDataException) {
@@ -52,7 +50,6 @@ public class ModelCliente extends Observable implements ModelInterface<Cliente> 
     public void eliminar(Object e) {
         try {
             daoCliente.eliminar_Cliente((int) e);
-            listCliente = daoCliente.vista_cliente();
             setChanged();
             notifyObservers();
         } catch (NoDataException | GlobalException noDataException) {
