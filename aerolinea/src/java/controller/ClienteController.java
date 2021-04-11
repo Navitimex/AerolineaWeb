@@ -1,5 +1,6 @@
 package controller;
 
+import Excepciones.GeneralException;
 import LogicaDeNegocio.Cliente;
 import Model.ModelCliente;
 import com.google.gson.Gson;
@@ -17,7 +18,6 @@ public class ClienteController {
 
     @Context
     private UriInfo context;
-
     public ClienteController() {
     }
 
@@ -29,9 +29,7 @@ public class ClienteController {
         Gson gson = new Gson();
         Cliente clienteRest = gson.fromJson(id, Cliente.class);
         ModelCliente mCliente = ModelCliente.getInstance();
-
         clienteRest = mCliente.consultar(clienteRest.getId());
-
         return clienteRest;
     }
 
@@ -39,4 +37,19 @@ public class ClienteController {
     @Consumes(MediaType.APPLICATION_JSON)
     public void putJson(String content) {
     }
+
+    @POST
+    @Path("/registrar")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String insertar(String id){
+    Gson gson = new Gson();
+    Cliente clienteRest = gson.fromJson(id, Cliente.class);
+    ModelCliente mCliente = ModelCliente.getInstance();
+    mCliente.insertar(clienteRest);
+    return gson.toJson(clienteRest);
+    }
+    
+    
+
 }

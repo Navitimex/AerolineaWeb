@@ -2292,8 +2292,10 @@ table.dataTable thead td {
 
 /*-------------------- 23. Login ------------------- */
 
-.login-area {
-    background: #F3F8FB;
+#loginArea {
+    background: url(../images/bg/image1.jpg)center/cover no-repeat;
+    position: relative;
+    z-index: 1;
 }
 
 .login-box {

@@ -27,6 +27,7 @@ public class DaoCliente extends Conexion {
             pstmt.setString(3, cliente.getNombre());
             pstmt.setString(4, cliente.getApellidos());
             pstmt.setString(5, cliente.getCorreo());
+            
             pstmt.setDate(6, (Date) cliente.getFec_naci()); //Funciona?
             pstmt.setString(7, cliente.getDireccion());
             pstmt.setString(8, cliente.getTel_trabajo());
