@@ -23,7 +23,6 @@ public class ModelDestino extends Observable implements ModelInterface<Destino> 
     }
 
     private ModelDestino() {
-        listPais = new ArrayList<Destino>();
         daoPais = new DaoDestino();
     }
 
@@ -41,7 +40,6 @@ public class ModelDestino extends Observable implements ModelInterface<Destino> 
     public void modificar(Destino e) {
         try {
             daoPais.actualizar_destino(e);
-            listPais = daoPais.vista_destino();
             setChanged();
             notifyObservers();
         } catch (NoDataException | GlobalException noDataException) {
@@ -52,7 +50,6 @@ public class ModelDestino extends Observable implements ModelInterface<Destino> 
     public void eliminar(Object e) {
         try {
             daoPais.eliminar_destino((int) e);
-            listPais = daoPais.vista_destino();
             setChanged();
             notifyObservers();
         } catch (NoDataException | GlobalException noDataException) {

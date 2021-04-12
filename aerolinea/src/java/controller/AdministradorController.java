@@ -2,8 +2,10 @@ package controller;
 
 import LogicaDeNegocio.Avion;
 import LogicaDeNegocio.Cliente;
+import LogicaDeNegocio.Destino;
 import Model.ModelAvion;
 import Model.ModelCliente;
+import Model.ModelDestino;
 import com.google.gson.Gson;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -31,6 +33,18 @@ public class AdministradorController {
         ModelAvion mAvion = ModelAvion.getInstance();
         mAvion.insertar(avionRest);
         return gson.toJson(avionRest);
+    }
+
+    @POST
+    @Path("/insertarDestino")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String insertarDestino(String id) {
+        Gson gson = new Gson();
+        Destino destinoRest = gson.fromJson(id, Destino.class);
+        ModelDestino mDestino = ModelDestino.getInstance();
+        mDestino.insertar(destinoRest);
+        return gson.toJson(destinoRest);
     }
 
     public AdministradorController() {

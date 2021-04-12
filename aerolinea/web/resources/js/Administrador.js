@@ -35,3 +35,36 @@ function insertarAvion() {
 
 }
 
+
+function insertarDestino() {
+    let destino = {
+        id:  1,
+        nombre: ($("#input_nombre").val()),
+    };
+    console.log(destino);
+    $.ajax({
+        url: "/aerolinea/api/administrador/insertarDestino",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(destino),
+
+        success: function (destinoRest) {
+            console.log("Todo bien si se inserto el Destino");
+            console.log(destinoRest);
+            console.log(destino);
+            window.location.href = "/aerolinea/Vistas/Administrador/AdministradorIndex.jsp";
+
+        }, statusCode: {
+            404: function () {
+                console.log("Estamos mamando");
+                window.location.href = "/aerolinea/Vistas/Administrador/500.jsp";
+            },
+            500: function () {
+                console.log("No se pudo insertar el horario");
+                window.location.href = "/aerolinea/Vistas/Administrador/404.jsp";
+            }
+        }
+
+    });
+
+}
