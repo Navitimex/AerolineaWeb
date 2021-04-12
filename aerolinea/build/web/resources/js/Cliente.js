@@ -16,6 +16,11 @@ function login() {
             } else {
                 $("#estadoLogin").append('<div class="alert alert-danger" role="alert">Usuario o contraseña incorrectos, favor intente nuevamente</div>');
             }
+            if (clienteRest.id === parseInt(cliente.id, 16) && clienteRest.contrasena === cliente.contrasena && clienteRest.rol === 1) {
+                window.location.href = "/aerolinea/Vistas/Administrador/AdministradorIndex.jsp";
+            } else {
+                $("#estadoLogin").append('<div class="alert alert-danger" role="alert">Usuario o contraseña incorrectos, favor intente nuevamente</div>');
+            }
         },
         statusCode: {
             404: function () {
@@ -32,7 +37,7 @@ function login() {
 }
 
 function registrar() {
- 
+
 
     // $('#spinnerWaiter').show();
     let cliente = {
@@ -48,7 +53,7 @@ function registrar() {
         tel_cel: $('#input_celular').val()
                 // contrasena1: $('#input_contrasena1').val()
     };
-  console.log(cliente);
+    console.log(cliente);
     $.ajax({
         url: "/aerolinea/api/cliente/registrar",
         type: "POST",

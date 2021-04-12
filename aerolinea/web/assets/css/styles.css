@@ -54,6 +54,13 @@
 
 /*------------------------- 1. Core Css -------------------*/
 
+
+
+.main-content{
+    background-image: url("../images/bg/image1.jpg");
+ background-color: #cccccc;
+}
+
 .page-container {
     width: 100%;
     height: 100%;
@@ -90,11 +97,12 @@
 
 .main-content {
     width: 100%;
-    background: #F3F8FB;
+
 }
 
 .main-content-inner {
     padding: 0 30px 50px;
+
 }
 
 /*------------------------- END Core Css -------------------*/
@@ -145,10 +153,12 @@
 }
 .sidebar-menu .logo{
     text-align: center;
+    color: white;
 }
 .logo a {
     display: inline-block;
     max-width: 120px;
+      color: white;
 }
 
 .metismenu >li >a {
@@ -166,7 +176,7 @@
 }
 
 .metismenu li a i {
-    color: #6a56a5;
+    color: #35C0B1;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }

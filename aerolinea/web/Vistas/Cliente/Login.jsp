@@ -35,8 +35,8 @@
                 <div class="login-box ptb--100">
                     <form>
                         <div class="login-form-head">
-                            <h4>Login</h4>
-                            <p>Hello there, Sign in and start managing your Admin Template</p>
+                            <h4>Inicio de Sesion</h4>
+                            <p> Inicia Sesion para tener la experiencia completa en nuestra plataforma.</p>
                         </div>
                         <div class="login-form-body">
                             <div class="form-gp">
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="form-footer text-center mt-5">
-                                <p class="text-muted">Don't have an account? <a href="/aerolinea/Vistas/Cliente/SingIn.jsp">Sign up</a></p>
+                                <p class="text-muted">Si todavia no tienes sesion <a href="/aerolinea/Vistas/Cliente/SingIn.jsp"> Registrate!</a></p>
                             </div>
                         </div>
                     </form>
