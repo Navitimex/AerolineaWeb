@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class DaoDestino extends Conexion {
 
-    private static final String INSERTAR_DESTINO = "call insertar_destino(?,?)";
+    private static final String INSERTAR_DESTINO = "call insertar_destino(?)";
     private static final String ACTUALIZAR_DESTINO = "call actualizar_destino(?,?)";
     private static final String MOSTRAR_DESTINO_X_ID = "call mostrar_destinos_x_id(?)";
     private static final String VISTA_DESTINO = "select * from keed_moviles.vista_destinos";
@@ -20,9 +20,10 @@ public class DaoDestino extends Conexion {
         conectar();
         CallableStatement pstmt = null;
         try {
+            
             pstmt = cnx.prepareCall(INSERTAR_DESTINO);
-            pstmt.setInt(1, destino.getCodigo());
-            pstmt.setString(2, destino.getNombre());
+          //  pstmt.setInt(1, destino.getCodigo());
+            pstmt.setString(1, destino.getNombre());
             boolean resultado = pstmt.execute();
             // <editor-fold defaultstate="collapsed" desc="Excepciones">
             if (resultado == true) {

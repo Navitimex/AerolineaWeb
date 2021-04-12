@@ -4,6 +4,7 @@ import DAO_AccesoADatos.DaoDestino;
 import Excepciones.GlobalException;
 import Excepciones.NoDataException;
 import Interfaces.ModelInterface;
+import LogicaDeNegocio.Avion;
 import LogicaDeNegocio.Destino;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -18,7 +19,6 @@ public class ModelDestino extends Observable implements ModelInterface<Destino> 
         if (mInstance == null) {
             mInstance = new ModelDestino();
         }
-
         return mInstance;
     }
 
