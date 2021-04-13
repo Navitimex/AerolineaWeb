@@ -47,7 +47,7 @@ function registrar() {
         nombre: $('#input_nombre').val(),
         apellidos: $('#input_apellios').val(),
         correo: $('#input_email').val(),
-        fec_naci: $('#input_nacimiento').val(),
+        fec_naci: $('#input_nacimiento').val().toLocaleDateString(),
         direccion: $('#input_direccion').val(),
         tel_trabajo: $('#input_tel_trabajo').val(),
         tel_cel: $('#input_celular').val()
