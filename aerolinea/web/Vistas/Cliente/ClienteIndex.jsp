@@ -99,7 +99,7 @@
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>© Copyright Aerolinea Keed.</p>
+                <p>ï¿½ Copyright Aerolinea Keed.</p>
             </div>
         </footer>
         <!-- footer area end-->
