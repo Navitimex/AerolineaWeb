@@ -7,7 +7,13 @@ import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class DaoCliente extends Conexion {
 
@@ -21,14 +27,19 @@ public class DaoCliente extends Conexion {
         conectar();
         CallableStatement pstmt = null;
         try {
+             //Date elocalDate = sqlDate.toLocalDate();
+            //java.sql.Date localDate = sqlDate.toLocalDate();
+           
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String fechaAux = dateFormat.format(cliente.getFec_naci());
+            
             pstmt = cnx.prepareCall(INSERTAR_CLIENTE);
             pstmt.setString(1, cliente.getContrasena());
             pstmt.setInt(2, cliente.getRol());
             pstmt.setString(3, cliente.getNombre());
             pstmt.setString(4, cliente.getApellidos());
             pstmt.setString(5, cliente.getCorreo());
-            
-            pstmt.setDate(6, (Date) cliente.getFec_naci()); //Funciona?
+            pstmt.setString(6, fechaAux); //Funciona?
             pstmt.setString(7, cliente.getDireccion());
             pstmt.setString(8, cliente.getTel_trabajo());
             pstmt.setString(9, cliente.getTel_cel());
