@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Login</title>
+        <title>Página principal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
         <link rel="stylesheet" href="/aerolinea/assets/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><h3>Aerolinea Keed</h3></a>
+                    <a href="/aerolinea/Vistas/Cliente/ClienteIndex.jsp"><h3>Aerolinea Keed</h3></a>
                 </div>
                 <br>
                 <h6 class="text-center" style="color: aliceblue"> <strong>Bienvenido Cliente</strong></h6>
@@ -48,14 +48,15 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li class="active"><a href="index.html"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+                            <li class="active"><a href="/aerolinea/Vistas/Cliente/ClienteIndex.jsp"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
                             <li>
                                 <a href="javascript:void(0)"><i class="fa fa-align-justify"></i><span>Servicios</span></a>
                                 <ul class="collapse">
-                                    <li><a href=""><i class="fa fa-plane"></i> Ver Vuelos Disponibles</a></li>
-                                    <li><a href=""><i class="fa fa-flag"></i> Ver Destinos Disponibles</a></li>
+                                     <li><a href="/aerolinea/Vistas/Cliente/VerVuelos.jsp"><i class="fa fa-plane"></i> Ver Vuelos Disponibles</a></li>
+                                    <li><a href="/aerolinea/Vistas/Cliente/VerDestinos.jsp"><i class="fa fa-flag"></i> Ver Destinos Disponibles</a></li>
 
-            </p>
+          
+          
                                 </ul>
                             </li>
                         </ul>
@@ -99,7 +100,7 @@
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>ï¿½ Copyright Aerolinea Keed.</p>
+                <p>© Copyright Aerolinea Keed.</p>
             </div>
         </footer>
         <!-- footer area end-->

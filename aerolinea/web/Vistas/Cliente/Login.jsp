@@ -1,4 +1,4 @@
-<!doctype html>
+    <!doctype html>
 <html class="h-100" lang="en">
 
     <head>
@@ -40,15 +40,17 @@
                         </div>
                         <div class="login-form-body">
                             <div class="form-gp">
-                                <label for="exampleInputEmail1">Cedula</label>
-                                <input type="id" id="idLogin" name="idLogin">
+                                <label for="exampleInputEmail1">Cédula</label>
+                                    <input  id="idLogin" name="idLogin" >
                                 <i class="ti-email"></i>
                             </div>
+                            
                             <div class="form-gp">
-                                <label for="exampleInputPassword1">Contrasena</label>
-                                <input type="password" id="password" name="password" >
+                                <label for="exampleInputPassword1">Contraseña</label>
+                                    <input type="password" id="password" name="password" >
                                 <i class="ti-lock"></i>
                             </div>
+                            
                             <div class="row mb-4 rmber-area">
                                 <div class="col-6">
                                     <div class="custom-control custom-checkbox mr-sm-2">

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Login</title>
+        <title>Index</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
         <link rel="stylesheet" href="/aerolinea/assets/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
             <div class="sidebar-menu">
                 <div class="sidebar-header">
                     <div class="logo">
-                        <a href="index.html"><h3 >Aerolinea Keed</h3></a>
+                        <a href="/aerolinea/Vistas/Cliente/ClienteIndex.jsp"><h3 >Aerolinea Keed</h3></a>
                     </div>
                     <br>
                     <h6 class="text-center" style="color: aliceblue"> <strong>Bienvenido Administrador</strong></h6>
@@ -48,7 +48,7 @@
                     <div class="menu-inner">
                         <nav>
                             <ul class="metismenu" id="menu">
-                                <li class="active"><a href="index.html"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+                                <li class="active"><a href="/aerolinea/Vistas/Cliente/ClienteIndex.jsp"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
                                 <li>
                                     <a href="javascript:void(0)"><i class="fa fa-align-justify"></i><span>Servicios</span></a>
                                     <ul class="collapse">
@@ -58,7 +58,8 @@
                                         <li><a href=""><i class="fa fa-plane"></i> Registrar Rutas</a></li>
                                         <li><a href=""><i class="fa fa-plane"></i> Registrar Tiquetes</a></li>
 
-                                        </p>
+                                        
+                                        
                                     </ul>
                                 </li>
                             </ul>

@@ -1,3 +1,90 @@
+
+function loaded(event) {
+    events(event);
+}
+
+function events(event) {
+   cargar
+}
+
+//------------------------Cargar todos los estudiantes matriculados en al menos un curso-----------------------------Inicio---
+var estudiantes = [];
+
+function cargar_Estudiantes() {
+    let ajaxTime = new Date().getTime();
+    $.ajax({
+        type: "GET",
+        url: "/admin/matricula/listaest",
+        contentType: "application/json",
+    }).then((solicitudes) => {
+        let totalTime = new Date().getTime() - ajaxTime;
+        let a = Math.ceil(totalTime / 1000);
+        let t = a == 1 ? a + ' segundo' : a + ' segundos';
+        $('#infoTiming').text(t);
+        estudiantes = solicitudes;
+        cargarEstudiantes(solicitudes);
+        $('#cargarDatosSpinner').hide();
+    },
+        (error) => {
+            alert(error.status);
+        }
+    );
+}
+
+function cargarEstudiantes(solicitudes) {
+    $("#lista-estudiantes").html("");
+    console.log(solicitudes);
+    solicitudes.forEach((solicitudes) => {
+        llenarEstudiantes(solicitudes);
+        
+    });
+}
+
+function llenarEstudiantes(solicitudes) {
+    let id_matricula = solicitudes.id_matricula;
+    let nrc = solicitudes.codigo_taller;
+    let nivel = solicitudes.nivel_taller == 1 ? 'Principiante' : solicitudes.nivel_taller == 2 ? 'Intermedio' : 'Avanzado';
+    let nombre_pro = solicitudes.nombre_profesor;
+    let id_matri = solicitudes.created_at;
+    let cedul = solicitudes.cedula;
+    let nomb = solicitudes.nombre.toUpperCase() + " " + solicitudes.apellido.toUpperCase();
+    let horario = solicitudes.dia.toUpperCase() + " " + solicitudes.hora + "-" + parseInt(solicitudes.hora + 1);
+    $("#lista-estudiantes").append(
+        "<tr>" +
+        "<td>" +
+        cedul +
+        " </td>" +
+        "<td>" +
+        nomb +
+        "</td>" +
+        "<td>" +
+        nrc +
+        "</td>" +
+        "<td>" +
+        horario +
+        "</td>" +
+        "<td>" +
+        nivel +
+        "</td>" +
+        "<td>" +
+        nombre_pro +
+        "</td>" +
+        "<td> por hacer</td>" +
+        "<td>" +
+        id_matri +
+        "</td>" +
+        '<td class="list-action ">' +
+        '<a class="btn btn-success text-white" data-id="' + id_matricula + '" data-toggle="modal" data-target="#modalVerMatricula">' +
+        '<i class="fas fa-eye"></i>' +
+        '</a>' +
+        '</td>' +
+        "</tr>"
+    );
+}
+
+
+
+
 function login() {
     var cliente = {
         id: $("#idLogin").val(),
@@ -47,7 +134,7 @@ function registrar() {
         nombre: $('#input_nombre').val(),
         apellidos: $('#input_apellios').val(),
         correo: $('#input_email').val(),
-        fec_naci: $('#input_nacimiento').val(),
+        fec_naci: $('#input_nacimiento').val().toLocaleDateString(),
         direccion: $('#input_direccion').val(),
         tel_trabajo: $('#input_tel_trabajo').val(),
         tel_cel: $('#input_celular').val()
@@ -82,7 +169,6 @@ function registrar() {
     });
 
 }
-
 
 function limpiarCampos() {
     $('#input_contrasena').val('');
