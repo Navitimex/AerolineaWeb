@@ -42,7 +42,7 @@
                         <a href="index.html"><h3 >Aerolinea Keed</h3></a>
                     </div>
                     <br>
-                    <h6 class="text-center" style="color: aliceblue"> <strong>Bienvenido Administrador</strong></h6>
+                    <h6 class="text-center" style="color: aliceblue"> <strong>Bienvenido Administrador  </strong></h6>
                 </div>
                 <div class="main-menu">
                     <div class="menu-inner">
@@ -84,10 +84,10 @@
                         <div class="col-8 clearfix">
                             <ul class="notification-area pull-right">
                                 <li>
-                                    <a href="/aerolinea/AsministradorIndex.jsp">
-                                        Exit
-                                        <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                    </a>
+                                    <button class="dropdown-item text-primary" onclick="logout()" >
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp;Logout
+                                    </button>
+
                                 </li>
                             </ul>
                         </div>
@@ -112,6 +112,7 @@
 
         <script src="/aerolinea/assets/js/vendor/jquery-2.2.4.min.js"></script>
         <!-- bootstrap 4 js -->
+        <script src="/aerolinea/resources/js/Administrador.js"></script>
         <script src="/aerolinea/assets/js/popper.min.js"></script>
         <script src="/aerolinea/resources/js/Cliente.js"></script>
         <script src="/aerolinea/assets/js/bootstrap.min.js"></script>
