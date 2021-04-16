@@ -2,6 +2,8 @@ package controller;
 
 import Excepciones.GeneralException;
 import LogicaDeNegocio.Cliente;
+import LogicaDeNegocio.Destino;
+import LogicaDeNegocio.Ruta;
 import LogicaDeNegocio.Vuelo;
 import Model.ModelCliente;
 import Model.ModelDestino;
@@ -63,11 +65,30 @@ public class ClienteController {
     public String mostarvuelos() {
         Gson gson = new Gson();
         ModelVuelo mVuelo = ModelVuelo.getInstance();
-        ArrayList<Vuelo> vueloRest = (ArrayList<Vuelo>) mVuelo.listar();
-        //System.out.priModelVuelo mVuelo = ModelVuelo.getInstance();ntln(ModelVuelo.getInstance().listar());
-        //System.out.println(ModelVuelo.getInstance().consultar(9));
-    
+        ArrayList<Vuelo> vueloRest = (ArrayList<Vuelo>) mVuelo.listar(); 
         return gson.toJson(vueloRest);
     }
 
+    
+    @GET
+    @Path("/verDestinos")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String mostarDestinos() {
+        Gson gson = new Gson();
+        ModelDestino mDestino = ModelDestino.getInstance();
+        ArrayList<Destino> destinoRest = (ArrayList<Destino>) mDestino.listar(); 
+        return gson.toJson(destinoRest);
+    }
+
+    @GET
+    @Path("/verRutas")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String mostarRutas() {
+        Gson gson = new Gson();
+        ModelRuta mRuta = ModelRuta.getInstance();
+        ArrayList<Ruta> rutaRest = (ArrayList<Ruta>) mRuta.listar(); 
+        return gson.toJson(rutaRest);
+    }
+    
+    
 }

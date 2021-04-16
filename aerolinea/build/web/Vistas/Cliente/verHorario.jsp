@@ -1,10 +1,16 @@
+<%-- 
+    Document   : verHorario
+    Created on : 16-abr-2021, 0:22:49
+    Author     : Estudiante
+--%>
+
 <!doctype html>
 <html class="h-100" lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Ver vuelos</title>
+        <title>Ver horarios</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
         <link rel="stylesheet" href="/aerolinea/assets/css/bootstrap.min.css">
@@ -42,7 +48,7 @@
                         <a href="/aerolinea/Vistas/Cliente/ClienteIndex.jsp"><h3>Aerolinea Keed</h3></a>
                     </div>
                     <br>
-                    <h6 class="text-center" style="color: aliceblue"> <strong>Ver vuelos</strong></h6>
+                    <h6 class="text-center" style="color: aliceblue"> <strong>Sección de horarios</strong></h6>
                 </div>
                 <div class="main-menu">
                     <div class="menu-inner">
@@ -54,9 +60,10 @@
                                     <ul class="collapse">
                                         <li><a href="/aerolinea/Vistas/Cliente/VerVuelos.jsp"><i class="fa fa-plane"></i> Ver vuelos disponibles</a></li>
                                         <li><a href="/aerolinea/Vistas/Cliente/VerDestinos.jsp"><i class="fa fa-flag"></i> Ver destinos disponibles</a></li>
-                                        <li><a href="/aerolinea/Vistas/Cliente/verAvion.jsp"><i class="fa fa-plane"></i> Ver rutas disponibles</a></li>
+                                        <li><a href="/aerolinea/Vistas/Cliente/verRuta.jsp"><i class="fa fa-plane"></i> Ver rutas disponibles</a></li>
                                         <li><a href="/aerolinea/Vistas/Cliente/verHorario.jsp"><i class="fa fa-flag"></i> Ver horarios disponibles</a></li>
                                         <li><a href="/aerolinea/Vistas/Cliente/verRuta.jsp"><i class="fa fa-plane"></i> Ver aviones disponibles</a></li>
+
 
                                     </ul>
                                 </li>
@@ -68,43 +75,35 @@
             <!-- sidebar menu area end -->
             <!-- main content area start -->
             <div class="container-fluid">
-                <h3 class="text-dark mb-4" style="margin-top: 40px;">Vuelos disponibles</h3>
+                <h3 class="text-dark mb-4" style="margin-top: 40px;">Destinos disponibles</h3>
                 <div class="card shadow">
-
                     <div class="card-header py-3">
                         <p class="text-primary m-0 font-weight-bold">Acá pondremos algo</p>
-
                     </div>
                     <div class="card-body">
+                        <div class="row">
 
+                        </div>
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Horario</th>
-                                        <th>Ruta</th>
-                                        <th>Avion</th>
-                                        <th>Precio</th>
-
-
+                                        <th>Nombre</th>                                    
                                     </tr>
                                 </thead>
-                                <tbody id="lista-vuelos">
+                                <tbody id="lista-destinos">
+
 
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Horario</th>
-                                        <th>Ruta</th>
-                                        <th>Avion</th>
-                                        <th>Precio</th>
+                                        <th>Nombre</th>  
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
-
 
                     </div>
                 </div>

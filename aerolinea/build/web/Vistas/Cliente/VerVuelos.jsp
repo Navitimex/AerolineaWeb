@@ -52,9 +52,11 @@
                                 <li>
                                     <a href="javascript:void(0)"><i class="fa fa-align-justify"></i><span>Servicios</span></a>
                                     <ul class="collapse">
-                                        <li><a href="/aerolinea/Vistas/Cliente/VerVuelos.jsp"><i class="fa fa-plane"></i> Ver Vuelos Disponibles</a></li>
-                                        <li><a href="/aerolinea/Vistas/Cliente/VerDestinos.jsp"><i class="fa fa-flag"></i> Ver Destinos Disponibles</a></li>
-
+                                        <li><a href="/aerolinea/Vistas/Cliente/VerVuelos.jsp"><i class="fa fa-plane"></i> Ver vuelos disponibles</a></li>
+                                        <li><a href="/aerolinea/Vistas/Cliente/VerDestinos.jsp"><i class="fa fa-flag"></i> Ver destinos disponibles</a></li>
+                                        <li><a href="/aerolinea/Vistas/Cliente/verAvion.jsp"><i class="fa fa-plane"></i> Ver rutas disponibles</a></li>
+                                        <li><a href="/aerolinea/Vistas/Cliente/verHorario.jsp"><i class="fa fa-flag"></i> Ver horarios disponibles</a></li>
+                                        <li><a href="/aerolinea/Vistas/Cliente/verRuta.jsp"><i class="fa fa-plane"></i> Ver aviones disponibles</a></li>
 
                                     </ul>
                                 </li>

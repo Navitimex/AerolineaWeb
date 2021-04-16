@@ -52,8 +52,11 @@
                                 <li>
                                     <a href="javascript:void(0)"><i class="fa fa-align-justify"></i><span>Servicios</span></a>
                                     <ul class="collapse">
-                                        <li><a href="/aerolinea/Vistas/Cliente/VerVuelos.jsp"><i class="fa fa-plane"></i> Ver Vuelos Disponibles</a></li>
-                                        <li><a href="/aerolinea/Vistas/Cliente/VerDestinos.jsp"><i class="fa fa-flag"></i> Ver Destinos Disponibles</a></li>
+                                      <li><a href="/aerolinea/Vistas/Cliente/VerVuelos.jsp"><i class="fa fa-plane"></i> Ver vuelos disponibles</a></li>
+                                        <li><a href="/aerolinea/Vistas/Cliente/VerDestinos.jsp"><i class="fa fa-flag"></i> Ver destinos disponibles</a></li>
+                                        <li><a href="/aerolinea/Vistas/Cliente/verRuta.jsp"><i class="fa fa-plane"></i> Ver rutas disponibles</a></li>
+                                        <li><a href="/aerolinea/Vistas/Cliente/verHorario.jsp"><i class="fa fa-flag"></i> Ver horarios disponibles</a></li>
+                                        <li><a href="/aerolinea/Vistas/Cliente/verRuta.jsp"><i class="fa fa-plane"></i> Ver aviones disponibles</a></li>
 
 
                                     </ul>
@@ -66,7 +69,7 @@
             <!-- sidebar menu area end -->
             <!-- main content area start -->
             <div class="container-fluid">
-                <h3 class="text-dark mb-4" style="margin-top: 40px;">Vuelos disponibles</h3>
+                <h3 class="text-dark mb-4" style="margin-top: 40px;">Destinos disponibles</h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 font-weight-bold">Acá pondremos algo</p>
@@ -80,49 +83,22 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Horario</th>
-                                        <th>Ruta</th>
-                                        <th>Avion</th>
-
+                                        <th>Nombre</th>                                    
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008/11/28</td>
-                                        <td>$162,700</td>
-                                    </tr>
+                                <tbody id="lista-destinos">
+
 
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Horario</th>
-                                        <th>Ruta</th>
-                                        <th>Avion</th>
-
+                                        <th>Nombre</th>  
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 align-self-center">
-                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
-                            </div>
-                            <div class="col-md-6">
-                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

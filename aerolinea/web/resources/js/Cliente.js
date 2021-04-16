@@ -5,9 +5,14 @@ function loaded(event) {
 
 function events(event) {
     cargar_Vuelos();
+    cargar_Destinos();
+    cargar_Rutas();
+    //cargar_Aviones();
+    //cargar_Horarios();
 }
 
 //------------------------Cargar todos los estudiantes matriculados en al menos un curso-----------------------------Inicio---
+{
 var vuelos = [];
 function cargar_Vuelos() {
 
@@ -29,37 +34,136 @@ function cargar_Vuelos() {
 function cargarVuelos(vueloRest) {
     $("#lista-vuelos").html("");
     console.log(vueloRest);
-        vueloRest.forEach((vueloRest) => {
+    vueloRest.forEach((vueloRest) => {
         llenarVuelos(vueloRest);
 
     });
 }
 
 function llenarVuelos(vueloRest) {
-    let id = vueloRest.id;
-    let horario = vueloRest.Horario_id.dia_semana + " de " + vueloRest.Horario_id.hora_salida + " a " + vueloRest.Horario_id.hora_llegada;
-    let ruta = vueloRest.Horario_id.ruta_codigo.origen.nombre + " - " + vueloRest.Horario_id.ruta_codigo.destino.nombre;
-    let avion = vueloRest.Avion_id.id + " - " + vueloRest.Avion_id.marca + " " + vueloRest.Avion_id.modelo;
-let precio = vueloRest.Horario_id.ruta_codigo.precio;
+    let idVuelo = vueloRest.id;
+    let horarioVuelo = vueloRest.Horario_id.dia_semana + " de " + vueloRest.Horario_id.hora_salida + " a " + vueloRest.Horario_id.hora_llegada;
+    let rutaVuelo = vueloRest.Horario_id.ruta_codigo.origen.nombre + " - " + vueloRest.Horario_id.ruta_codigo.destino.nombre;
+    let avionVuelo = vueloRest.Avion_id.id + " - " + vueloRest.Avion_id.marca + " " + vueloRest.Avion_id.modelo;
+    let precioVuelo = vueloRest.Horario_id.ruta_codigo.precio;
     $("#lista-vuelos").append(
             "<tr>" +
             "<td>" +
-            id +
+            idVuelo +
             " </td>" +
             "<td>" +
-            horario +
+            horarioVuelo +
             " </td>" +
             "<td>" +
-            ruta +
+            rutaVuelo +
             "</td>" +
             "<td>" +
-            avion +
+            avionVuelo +
             "</td>" +
-               "<td>" + "&#x20a1;"+
-            precio +
+            "<td>" + "&#x20a1;" +
+            precioVuelo +
             "</td>" +
             "</tr>"
             );
+}
+}
+{
+var destinos = [];
+function cargar_Destinos() {
+    $.ajax({
+        type: "GET",
+        url: "/aerolinea/api/cliente/verDestinos",
+        contentType: "application/json"
+    }).then((destinoRest) => {
+        destinos = destinoRest;
+        
+        cargarDestinos(destinoRest);
+    },
+            (error) => {
+        alert(error.status);
+    }
+    );
+}
+
+function cargarDestinos(destinoRest) {
+    $("#lista-destinos").html("");
+    console.log(destinoRest);
+    destinoRest.forEach((destinoRest) => {
+        llenarDestinos(destinoRest);
+    });
+}
+
+function llenarDestinos(destinoRest) {
+    let idDestinos= destinoRest.codigo;
+    let nombreDestinos = destinoRest.nombre;
+            $("#lista-destinos").append(
+            "<tr>" +
+            "<td>" +
+            idDestinos +
+            " </td>" +
+            "<td>" +
+            nombreDestinos +
+            " </td>" +
+            "</tr>"
+            );
+}
+}
+{
+var rutas = [];
+function cargar_Rutas() {
+    $.ajax({
+        type: "GET",
+        url: "/aerolinea/api/cliente/verRutas",
+        contentType: "application/json"
+    }).then((rutaRest) => {
+        rutas = rutaRest;
+        cargarRutas(rutaRest);
+    },
+            (error) => {
+        alert(error.status);
+    }
+    );
+}
+
+function cargarRutas(rutaRest) {
+    $("#lista-rutas").html("");
+   console.log("Hola mundo");
+    console.log(rutaRest);
+    rutaRest.forEach((rutaRest) => {
+        llenarRutas(rutaRest);
+    });
+}
+
+function llenarRutas(rutaRest) {
+    let idRuta = rutaRest.codigo; 
+    let destinoRuta = rutaRest.destino.nombre;
+    let origenRuta = rutaRest.origen.nombre;
+    let duracionRuta = rutaRest.duracionMin;
+    let precioRuta = rutaRest.precio;
+    let descuentoRuta = rutaRest.descuento;
+            $("#lista-rutas").append(
+            "<tr>" +
+            "<td>" +
+            idRuta +
+            " </td>" +
+            "<td>" +
+            origenRuta +
+            " </td>" +
+             "<td>" +
+            destinoRuta +
+            " </td>" +
+             "<td>" +
+            duracionRuta +
+            " </td>" +
+            "<td>" +
+            precioRuta +
+            " </td>" +
+             "<td>" +
+            descuentoRuta +
+            " </td>" +
+            "</tr>"
+            );
+}
 }
 
 
