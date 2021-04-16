@@ -41,14 +41,14 @@ public class backendmain {
 //System.out.println(ModelCliente.getInstance().consultar(5));
 //ModelCliente.getInstance().insertar(ModelCliente.getInstance().consultar(5));
 
-//System.out.println(ModelRuta.getInstance().listar());
-//System.out.println(ModelRuta.getInstance().consultar(4));
+System.out.println(ModelRuta.getInstance().listar());
+System.out.println(ModelRuta.getInstance().consultar(4));
 
 //System.out.println(ModelHorario.getInstance().listar());
 //System.out.println(ModelHorario.getInstance().consultar(5));
 
 //System.out.println(ModelVuelo.getInstance().listar());
-//System.out.println(ModelVuelo.getInstance().consultar(9));
+//System.out.println(ModelVuelo.getInstance().consultar(1));
 
 //System.out.println(ModelTiquete.getInstance().listar());
 //System.out.println(ModelTiquete.getInstance().consultar(14));

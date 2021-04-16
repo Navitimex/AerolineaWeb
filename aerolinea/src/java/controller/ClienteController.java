@@ -2,11 +2,17 @@ package controller;
 
 import Excepciones.GeneralException;
 import LogicaDeNegocio.Cliente;
+import LogicaDeNegocio.Vuelo;
 import Model.ModelCliente;
+import Model.ModelDestino;
+import Model.ModelRuta;
+import Model.ModelVuelo;
 import com.google.gson.Gson;
+import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -18,6 +24,7 @@ public class ClienteController {
 
     @Context
     private UriInfo context;
+
     public ClienteController() {
     }
 
@@ -42,14 +49,25 @@ public class ClienteController {
     @Path("/registrar")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String insertar(String id){
-    Gson gson = new Gson();
-    Cliente clienteRest = gson.fromJson(id, Cliente.class);
-    ModelCliente mCliente = ModelCliente.getInstance();
-    mCliente.insertar(clienteRest);
-    return gson.toJson(clienteRest);
+    public String insertar(String id) {
+        Gson gson = new Gson();
+        Cliente clienteRest = gson.fromJson(id, Cliente.class);
+        ModelCliente mCliente = ModelCliente.getInstance();
+        mCliente.insertar(clienteRest);
+        return gson.toJson(clienteRest);
     }
+
+    @GET
+    @Path("/verVuelos")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String mostarvuelos() {
+        Gson gson = new Gson();
+        ModelVuelo mVuelo = ModelVuelo.getInstance();
+        ArrayList<Vuelo> vueloRest = (ArrayList<Vuelo>) mVuelo.listar();
+        //System.out.priModelVuelo mVuelo = ModelVuelo.getInstance();ntln(ModelVuelo.getInstance().listar());
+        //System.out.println(ModelVuelo.getInstance().consultar(9));
     
-    
+        return gson.toJson(vueloRest);
+    }
 
 }

@@ -7,6 +7,8 @@ import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class DaoCliente extends Conexion {
@@ -27,8 +29,9 @@ public class DaoCliente extends Conexion {
             pstmt.setString(3, cliente.getNombre());
             pstmt.setString(4, cliente.getApellidos());
             pstmt.setString(5, cliente.getCorreo());
-            
-            pstmt.setDate(6, (Date) cliente.getFec_naci()); //Funciona?
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String fechaAux = dateFormat.format(cliente.getFec_naci());
+            pstmt.setString(6,fechaAux ); //Funciona?
             pstmt.setString(7, cliente.getDireccion());
             pstmt.setString(8, cliente.getTel_trabajo());
             pstmt.setString(9, cliente.getTel_cel());

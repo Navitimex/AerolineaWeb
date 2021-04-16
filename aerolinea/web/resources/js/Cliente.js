@@ -4,84 +4,63 @@ function loaded(event) {
 }
 
 function events(event) {
-   cargar
+    cargar_Vuelos();
 }
 
 //------------------------Cargar todos los estudiantes matriculados en al menos un curso-----------------------------Inicio---
-var estudiantes = [];
+var vuelos = [];
+function cargar_Vuelos() {
 
-function cargar_Estudiantes() {
-    let ajaxTime = new Date().getTime();
     $.ajax({
         type: "GET",
-        url: "/admin/matricula/listaest",
-        contentType: "application/json",
-    }).then((solicitudes) => {
-        let totalTime = new Date().getTime() - ajaxTime;
-        let a = Math.ceil(totalTime / 1000);
-        let t = a == 1 ? a + ' segundo' : a + ' segundos';
-        $('#infoTiming').text(t);
-        estudiantes = solicitudes;
-        cargarEstudiantes(solicitudes);
-        $('#cargarDatosSpinner').hide();
+        url: "/aerolinea/api/cliente/verVuelos",
+        contentType: "application/json"
+    }).then((vueloRest) => {
+        vuelos = vueloRest;
+        console.log(vuelos);
+        cargarVuelos(vueloRest);
     },
-        (error) => {
-            alert(error.status);
-        }
+            (error) => {
+        alert(error.status);
+    }
     );
 }
 
-function cargarEstudiantes(solicitudes) {
-    $("#lista-estudiantes").html("");
-    console.log(solicitudes);
-    solicitudes.forEach((solicitudes) => {
-        llenarEstudiantes(solicitudes);
-        
+function cargarVuelos(vueloRest) {
+    $("#lista-vuelos").html("");
+    console.log(vueloRest);
+        vueloRest.forEach((vueloRest) => {
+        llenarVuelos(vueloRest);
+
     });
 }
 
-function llenarEstudiantes(solicitudes) {
-    let id_matricula = solicitudes.id_matricula;
-    let nrc = solicitudes.codigo_taller;
-    let nivel = solicitudes.nivel_taller == 1 ? 'Principiante' : solicitudes.nivel_taller == 2 ? 'Intermedio' : 'Avanzado';
-    let nombre_pro = solicitudes.nombre_profesor;
-    let id_matri = solicitudes.created_at;
-    let cedul = solicitudes.cedula;
-    let nomb = solicitudes.nombre.toUpperCase() + " " + solicitudes.apellido.toUpperCase();
-    let horario = solicitudes.dia.toUpperCase() + " " + solicitudes.hora + "-" + parseInt(solicitudes.hora + 1);
-    $("#lista-estudiantes").append(
-        "<tr>" +
-        "<td>" +
-        cedul +
-        " </td>" +
-        "<td>" +
-        nomb +
-        "</td>" +
-        "<td>" +
-        nrc +
-        "</td>" +
-        "<td>" +
-        horario +
-        "</td>" +
-        "<td>" +
-        nivel +
-        "</td>" +
-        "<td>" +
-        nombre_pro +
-        "</td>" +
-        "<td> por hacer</td>" +
-        "<td>" +
-        id_matri +
-        "</td>" +
-        '<td class="list-action ">' +
-        '<a class="btn btn-success text-white" data-id="' + id_matricula + '" data-toggle="modal" data-target="#modalVerMatricula">' +
-        '<i class="fas fa-eye"></i>' +
-        '</a>' +
-        '</td>' +
-        "</tr>"
-    );
+function llenarVuelos(vueloRest) {
+    let id = vueloRest.id;
+    let horario = vueloRest.Horario_id.dia_semana + " de " + vueloRest.Horario_id.hora_salida + " a " + vueloRest.Horario_id.hora_llegada;
+    let ruta = vueloRest.Horario_id.ruta_codigo.origen.nombre + " - " + vueloRest.Horario_id.ruta_codigo.destino.nombre;
+    let avion = vueloRest.Avion_id.id + " - " + vueloRest.Avion_id.marca + " " + vueloRest.Avion_id.modelo;
+let precio = vueloRest.Horario_id.ruta_codigo.precio;
+    $("#lista-vuelos").append(
+            "<tr>" +
+            "<td>" +
+            id +
+            " </td>" +
+            "<td>" +
+            horario +
+            " </td>" +
+            "<td>" +
+            ruta +
+            "</td>" +
+            "<td>" +
+            avion +
+            "</td>" +
+               "<td>" + "&#x20a1;"+
+            precio +
+            "</td>" +
+            "</tr>"
+            );
 }
-
 
 
 
@@ -182,3 +161,6 @@ function limpiarCampos() {
     $('#email').val('');
     $('#input_celular').val('');
 }
+
+
+document.addEventListener("DOMContentLoaded", loaded);
