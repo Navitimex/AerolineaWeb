@@ -13,8 +13,9 @@ function login() {
         contentType: "application/json",
         data: JSON.stringify(cliente),
         success: function (clienteRest) {
-            console.log(clienteRest);
-            console.log(cliente);
+            sessionStorage.setItem("cliente", JSON.stringify(clienteRest));
+            //console.log(sessionStorage.getItem('cliente'));
+            //var nombre = JSON.parse(sessionStorage.getItem('cliente')).nombre;
             if (clienteRest.id === parseInt(cliente.id, 16) && clienteRest.contrasena === cliente.contrasena) {
                 window.location.href = "/aerolinea/Vistas/Cliente/ClienteIndex.jsp";
             } else {
@@ -39,6 +40,21 @@ function login() {
     });
 
 }
+
+
+
+function logout() {
+    sessionStorage.clear();
+    sessionStorage.removeItem("cliente");
+    window.location.href = "/aerolinea/Vistas/Cliente/Login.jsp";
+}
+
+function setUsuario() {
+    if (sessionStorage.getItem('cliente') !== null) {
+        $("#idClienteSession").html(JSON.parse(sessionStorage.getItem('cliente')).nombre);
+    }
+}
+
 
 function registrar() {
 

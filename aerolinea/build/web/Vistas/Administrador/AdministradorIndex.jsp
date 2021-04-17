@@ -58,8 +58,8 @@
                                         <li><a href=""><i class="fa fa-plane"></i> Registrar Rutas</a></li>
                                         <li><a href=""><i class="fa fa-plane"></i> Registrar Tiquetes</a></li>
 
-                                        
-                                        
+
+
                                     </ul>
                                 </li>
                             </ul>
@@ -85,10 +85,9 @@
                         <div class="col-8 clearfix">
                             <ul class="notification-area pull-right">
                                 <li>
-                                    <a href="/aerolinea/AsministradorIndex.jsp">
-                                        Exit
-                                        <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                    </a>
+                                    <button class="dropdown-item text-primary" onclick="logout()" >
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp;Logout
+                                    </button>
                                 </li>
                             </ul>
                         </div>
@@ -115,6 +114,7 @@
         <!-- bootstrap 4 js -->
         <script src="/aerolinea/assets/js/popper.min.js"></script>
         <script src="/aerolinea/resources/js/Cliente.js"></script>
+        <script src="/aerolinea/resources/js/Administrador.js"></script>
         <script src="/aerolinea/assets/js/bootstrap.min.js"></script>
         <script src="/aerolinea/assets/js/owl.carousel.min.js"></script>
         <script src="/aerolinea/assets/js/metisMenu.min.js"></script>
