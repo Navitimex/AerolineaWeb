@@ -3,10 +3,12 @@ package controller;
 import Excepciones.GeneralException;
 import LogicaDeNegocio.Cliente;
 import LogicaDeNegocio.Destino;
+import LogicaDeNegocio.Horario;
 import LogicaDeNegocio.Ruta;
 import LogicaDeNegocio.Vuelo;
 import Model.ModelCliente;
 import Model.ModelDestino;
+import Model.ModelHorario;
 import Model.ModelRuta;
 import Model.ModelVuelo;
 import com.google.gson.Gson;
@@ -65,18 +67,17 @@ public class ClienteController {
     public String mostarvuelos() {
         Gson gson = new Gson();
         ModelVuelo mVuelo = ModelVuelo.getInstance();
-        ArrayList<Vuelo> vueloRest = (ArrayList<Vuelo>) mVuelo.listar(); 
+        ArrayList<Vuelo> vueloRest = (ArrayList<Vuelo>) mVuelo.listar();
         return gson.toJson(vueloRest);
     }
 
-    
     @GET
     @Path("/verDestinos")
     @Produces(MediaType.APPLICATION_JSON)
     public String mostarDestinos() {
         Gson gson = new Gson();
         ModelDestino mDestino = ModelDestino.getInstance();
-        ArrayList<Destino> destinoRest = (ArrayList<Destino>) mDestino.listar(); 
+        ArrayList<Destino> destinoRest = (ArrayList<Destino>) mDestino.listar();
         return gson.toJson(destinoRest);
     }
 
@@ -86,9 +87,18 @@ public class ClienteController {
     public String mostarRutas() {
         Gson gson = new Gson();
         ModelRuta mRuta = ModelRuta.getInstance();
-        ArrayList<Ruta> rutaRest = (ArrayList<Ruta>) mRuta.listar(); 
+        ArrayList<Ruta> rutaRest = (ArrayList<Ruta>) mRuta.listar();
         return gson.toJson(rutaRest);
     }
-    
-    
+
+    @GET
+    @Path("/verHorarios")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String mostarHorarios() {
+        Gson gson = new Gson();
+        ModelHorario mHorario = ModelHorario.getInstance();
+        ArrayList<Horario> horarioRest = (ArrayList<Horario>) mHorario.listar();
+        return gson.toJson(horarioRest);
+    }
+
 }

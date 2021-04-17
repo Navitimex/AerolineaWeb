@@ -63,8 +63,6 @@
                                         <li><a href="/aerolinea/Vistas/Cliente/verRuta.jsp"><i class="fa fa-plane"></i> Ver rutas disponibles</a></li>
                                         <li><a href="/aerolinea/Vistas/Cliente/verHorario.jsp"><i class="fa fa-flag"></i> Ver horarios disponibles</a></li>
                                         <li><a href="/aerolinea/Vistas/Cliente/verRuta.jsp"><i class="fa fa-plane"></i> Ver aviones disponibles</a></li>
-
-
                                     </ul>
                                 </li>
                             </ul>
@@ -75,7 +73,7 @@
             <!-- sidebar menu area end -->
             <!-- main content area start -->
             <div class="container-fluid">
-                <h3 class="text-dark mb-4" style="margin-top: 40px;">Destinos disponibles</h3>
+                <h3 class="text-dark mb-4" style="margin-top: 40px;">Horarios disponibles</h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 font-weight-bold">Acá pondremos algo</p>
@@ -89,17 +87,24 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Nombre</th>                                    
+                                        <th>Día de la semana</th>
+                                        <th>Hora de salida</th>
+                                        <th>Hora de llegada</th>  
+                                        <th>Trayecto</th>
+
                                     </tr>
                                 </thead>
-                                <tbody id="lista-destinos">
+                                <tbody id="lista-horarios">
 
 
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Nombre</th>  
+                                        <th>Día de la semana</th>
+                                        <th>Hora de salida</th>
+                                        <th>Hora de llegada</th>  
+                                        <th>Trayecto</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -123,7 +128,7 @@
         <script src="/aerolinea/assets/js/vendor/jquery-2.2.4.min.js"></script>
         <!-- bootstrap 4 js -->
         <script src="/aerolinea/assets/js/popper.min.js"></script>
-        <script src="/aerolinea/resources/js/Cliente.js"></script>
+        <script src="/aerolinea/resources/js/Administrador/verHorario.js"></script>
         <script src="/aerolinea/assets/js/bootstrap.min.js"></script>
         <script src="/aerolinea/assets/js/owl.carousel.min.js"></script>
         <script src="/aerolinea/assets/js/metisMenu.min.js"></script>
