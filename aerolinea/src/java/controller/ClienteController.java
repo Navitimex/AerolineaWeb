@@ -30,6 +30,7 @@ public class ClienteController {
         Cliente clienteRest = gson.fromJson(id, Cliente.class);
         ModelCliente mCliente = ModelCliente.getInstance();
         clienteRest = mCliente.consultar(clienteRest.getId());
+      
         return clienteRest;
     }
 

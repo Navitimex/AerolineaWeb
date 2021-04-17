@@ -35,6 +35,13 @@ function insertarAvion() {
 
 }
 
+function logout() {
+
+    sessionStorage.clear();
+    sessionStorage.removeItem("cliente");
+    window.location.href = "/aerolinea/Vistas/Cliente/Login.jsp";
+
+}
 
 function insertarDestino() {
     let destino = {
